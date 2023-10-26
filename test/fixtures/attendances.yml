@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  date: 2023-10-26
+  punch_in_time: 2023-10-26 18:39:39
+  punch_out_time: 2023-10-26 18:39:39
+  attendance_status: MyString
+
+two:
+  employee_id: 1
+  date: 2023-10-26
+  punch_in_time: 2023-10-26 18:39:39
+  punch_out_time: 2023-10-26 18:39:39
+  attendance_status: MyString
