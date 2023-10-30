@@ -13,7 +13,7 @@ describe Employee do
                             employee_id: 'TM123')
   end
 
-  it 'Employee model must be created successfulyl with email, password, address and gender fields' do
+  it 'Employee instance must be created successfulyl with email, password, address and gender fields' do
     expect(@employee.save).to eq true
   end
 

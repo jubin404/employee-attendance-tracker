@@ -16,26 +16,31 @@ describe Attendance do
                                  punch_in_time: '10:00 am', 
                                  punch_out_time: '6:00 pm',
                                  attendance_status: 'present')
+  end
+
+  it 'Attendance instance can be created with employee id and date fields' do
     expect(@attendance.save).to eq true
   end
 
-  it 'Employee id must be present' do
-    @attendance.employee_id = nil
-  end
+  context 'Checking attendance model attribute values' do
+    it 'Employee id must be present' do
+      @attendance.employee_id = nil
+    end
 
-  it 'Date must be present' do
-    @attendance.date = nil
-  end
+    it 'Date must be present' do
+      @attendance.date = nil
+    end
 
-  it 'Punch out time must be after punch in time' do
-    @attendance.punch_in_time = '6:01 pm'
-  end
+    it 'Punch out time must be after punch in time' do
+      @attendance.punch_in_time = '6:01 pm'
+    end
 
-  it 'Attendance entry must have a valid date' do
-    @attendance.date = '31-02-2023'
-  end
-  
-  after do
-    expect(@attendance.save).to eq false
+    it 'Attendance entry must have a valid date' do
+      @attendance.date = '31-02-2023'
+    end
+
+    after do
+      expect(@attendance.save).to eq false
+    end
   end
 end
