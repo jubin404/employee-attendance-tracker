@@ -1,177 +1,93 @@
 require 'rails_helper'
 
 describe Employee do
+  before do
+    @address= Address.create(line_one: 'home')
+    @gender= Gender.create(title: 'male')
+    @employee= Employee.new(email: 'test@gmail.com', 
+                               password: 'testing', 
+                               address_id: @address[:id],
+                               first_name: 'first',
+                               last_name: 'last', 
+                               gender_id: @gender[:id],
+                               employee_id: 'TM101')
+  end
+
   context 'When attribute values of Employee model' do
     it 'Employee model must be created successfulyl with email, password, address and gender fields' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', 
-                                 password: 'testing', 
-                                 address_id: address[:id],
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 gender_id: gender[:id],
-                                 employee_id: 'TM101')
-      expect(employee.valid?).to eq true
+      expect(@employee.save).to eq true
     end
 
     it 'Employee must have non-empty email' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee = Employee.create(password: 'testing', 
-                                 address_id: address[:id],
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 gender_id: gender[:id],
-                                 employee_id: 'TM101')
-      expect(employee.valid?).to eq false
+      @employee[:email] = nil
+      expect(@employee.save).to eq false
     end
 
     it 'Employee must have non-empty password' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', 
-                                 address_id: address[:id],
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 gender_id: gender[:id],
-                                 employee_id: 'TM101')
-      expect(employee.valid?).to eq false
+      @employee.password = nil
+      expect(@employee.save).to eq false
     end
+
     it 'Employee must have non-empty adress' do
-      gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', 
-                                 password: 'testing', 
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 gender_id: gender[:id],
-                                 employee_id: 'TM101')
-      expect(employee.valid?).to eq false
+      @employee.address_id = nil
+      expect(@employee.save).to eq false
     end
 
     it 'Employee must have non-empty gender' do
-      address = Address.create(line_one: 'home')
-      employee = Employee.create(email: 'test@gmail.com', 
-                                 password: 'testing', 
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 employee_id: 'TM101')
-      expect(employee.valid?).to eq false
+      @employee.gender_id = nil
+      expect(@employee.save).to eq false
     end
 
     it 'Employee must have minimum of 3 characters in their first name' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee_01 = Employee.create(email: 'test@gmail.com', 
-                                    password: 'testing', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM101')
-      employee_02 = Employee.create(email: 'test02@gmail.com', 
-                                    password: 'test', 
-                                    first_name: 'fi',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM102')
-      expect(employee_01.valid?).to eq true                         
-      expect(employee_02.valid?).to eq false  
+      @employee.first_name = '12'
+      expect(@employee.save).to eq false
+
+      @employee.first_name = '123'                      
+      expect(@employee.save).to eq true  
     end
 
     it 'Employee must have minimum of 3 characters in their last name' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee_01 = Employee.create(email: 'test@gmail.com', 
-                                    password: 'testing', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM101')
-      employee_02 = Employee.create(email: 'test02@gmail.com', 
-                                    password: 'test', 
-                                    first_name: 'first',
-                                    last_name: 'la', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM102')
-      expect(employee_01.valid?).to eq true                         
-      expect(employee_02.valid?).to eq false  
+      @employee.last_name = '12'
+      expect(@employee.save).to eq false
+      
+      @employee.last_name = '123'                      
+      expect(@employee.save).to eq true  
     end
 
     it 'Employee password must have a minimum strength of 6 characters' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee_01 = Employee.create(email: 'test@gmail.com', 
-                                    password: 'testing', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM101')
-      employee_02 = Employee.create(email: 'test02@gmail.com', 
-                                    password: 'test', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM102')
-      expect(employee_01.valid?).to eq true                         
-      expect(employee_02.valid?).to eq false  
+      @employee.password = '12345'
+      expect(@employee.save).to eq false
+      
+      @employee.password = '123456'                      
+      expect(@employee.save).to eq true  
     end
 
     it 'Employee id must start with TM' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee_01 = Employee.create(email: 'test@gmail.com', 
-                                    password: 'testing', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'TM101')
-      employee_02 = Employee.create(email: 'test02@gmail.com', 
-                                    password: 'testing', 
-                                    first_name: 'first',
-                                    last_name: 'last', 
-                                    address_id: address[:id],
-                                    gender_id: gender[:id],
-                                    employee_id: 'AM101')
-      expect(employee_01.valid?).to eq true                         
-      expect(employee_02.valid?).to eq false                         
+      @employee.employee_id = 'AM123'
+      expect(@employee.save).to eq false
+      
+      @employee.employee_id = 'TM123'                      
+      expect(@employee.save).to eq true                         
     end
   end
 
   context 'When testing associations of Employee model' do
-    it 'Employee address is linked to the right entry from address model' do
-      address_01 = Address.create(line_one: 'home 01')
-      address_02 = Address.create(line_one: 'home 02')
-      employee = Employee.new(address_id: address_02[:id])
-      expect(employee.address[:line_one]).to  eq 'home 02'
+    before do
+      @employee.save
     end
 
-    it 'Employee address is linked to the right gender from gender model' do
-      gender_01 = Gender.create(title: 'male')
-      gender_02 = Gender.create(title: 'female')
-      employee = Employee.new(gender_id: gender_02[:id])
-      expect(employee.gender[:title]).to  eq 'female'
+    it 'Employee @addressis linked to the right entry from @addressmodel' do
+      expect(@employee.address[:line_one]).to  eq 'home'
+    end
+
+    it 'Employee @addressis linked to the right @genderfrom @gendermodel' do
+      expect(@employee.gender[:title]).to  eq 'male'
     end
 
     it 'Employee attendances are recorded successfully in attendance model' do
-      address = Address.create(line_one: 'home')
-      gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', 
-                                 password: 'testing', 
-                                 first_name: 'first',
-                                 last_name: 'last', 
-                                 address_id: address[:id],
-                                 gender_id: gender[:id],
-                                 employee_id: 'TM101')
-      attendance_01 = Attendance.create(employee_id: employee[:id], date: '01-01-2023', attendance_status: 'present')
-      attendance_02= Attendance.create(employee_id: employee[:id], date: '02-01-2023', attendance_status: 'absent')
-      test_day = employee.attendances.select { |entry| entry[:date] == '02-01-2023'.to_date }
+      Attendance.create(employee_id: @employee[:id], date: '01-01-2023', attendance_status: 'present')
+      Attendance.create(employee_id: @employee[:id], date: '02-01-2023', attendance_status: 'absent')
+      test_day = @employee.attendances.select { |entry| entry[:date] == '02-01-2023'.to_date }
       expect(test_day.first[:attendance_status]).to  eq 'absent'
     end
   end
