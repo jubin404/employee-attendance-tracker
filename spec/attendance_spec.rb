@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe Attendance do
   before do
-    @address= Address.create(line_one: 'home')
-    @gender= Gender.create(title: 'male')
-    @employee= Employee.create(email: 'test@gmail.com', 
+    @address = Address.create(line_one: 'home')
+    @gender = Gender.create(title: 'male')
+    @employee = Employee.create(email: 'test@gmail.com', 
                                password: '123456', 
                                address_id: @address[:id],
                                first_name: 'first',
