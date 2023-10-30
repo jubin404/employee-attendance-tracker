@@ -5,69 +5,67 @@ describe Employee do
     @address= Address.create(line_one: 'home')
     @gender= Gender.create(title: 'male')
     @employee= Employee.new(email: 'test@gmail.com', 
-                               password: 'testing', 
-                               address_id: @address[:id],
-                               first_name: 'first',
-                               last_name: 'last', 
-                               gender_id: @gender[:id],
-                               employee_id: 'TM101')
+                            password: '123456', 
+                            address_id: @address[:id],
+                            first_name: 'first',
+                            last_name: 'last', 
+                            gender_id: @gender[:id],
+                            employee_id: 'TM123')
   end
 
-  context 'When attribute values of Employee model' do
-    it 'Employee model must be created successfulyl with email, password, address and gender fields' do
-      expect(@employee.save).to eq true
-    end
+  it 'Employee model must be created successfulyl with email, password, address and gender fields' do
+    expect(@employee.save).to eq true
+  end
 
+  context 'Presence of attribute values of Employee model' do
     it 'Employee must have non-empty email' do
       @employee[:email] = nil
-      expect(@employee.save).to eq false
     end
 
     it 'Employee must have non-empty password' do
       @employee.password = nil
-      expect(@employee.save).to eq false
     end
 
     it 'Employee must have non-empty adress' do
       @employee.address_id = nil
-      expect(@employee.save).to eq false
     end
 
     it 'Employee must have non-empty gender' do
       @employee.gender_id = nil
+    end
+
+    after do
       expect(@employee.save).to eq false
+    end
+  end
+
+  context 'Constraints of attribute values of Employee model' do
+    before do
+      expect(@employee.save).to eq true
+    end
+
+    it 'Employee must have a valid email id' do
+      @employee.email = 'test'
     end
 
     it 'Employee must have minimum of 3 characters in their first name' do
       @employee.first_name = '12'
-      expect(@employee.save).to eq false
-
-      @employee.first_name = '123'                      
-      expect(@employee.save).to eq true  
     end
 
     it 'Employee must have minimum of 3 characters in their last name' do
       @employee.last_name = '12'
-      expect(@employee.save).to eq false
-      
-      @employee.last_name = '123'                      
-      expect(@employee.save).to eq true  
     end
 
     it 'Employee password must have a minimum strength of 6 characters' do
       @employee.password = '12345'
-      expect(@employee.save).to eq false
-      
-      @employee.password = '123456'                      
-      expect(@employee.save).to eq true  
     end
 
     it 'Employee id must start with TM' do
       @employee.employee_id = 'AM123'
+    end
+
+    after do
       expect(@employee.save).to eq false
-      
-      @employee.employee_id = 'TM123'                      
-      expect(@employee.save).to eq true                         
     end
   end
 
