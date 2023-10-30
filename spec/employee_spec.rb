@@ -6,7 +6,6 @@ describe Employee do
       address = Address.create(line_one: 'home')
       gender = Gender.create(title: 'male')
       employee = Employee.create(email: 'test@gmail.com', password: 'testing', address_id: address[:id], gender_id: gender[:id])
-
       expect(employee.valid?).to eq true
     end
 
