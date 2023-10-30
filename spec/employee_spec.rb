@@ -5,26 +5,57 @@ describe Employee do
     it 'Employee model must be created successfulyl with email, password, address and gender fields' do
       address = Address.create(line_one: 'home')
       gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', password: 'testing', address_id: address[:id], gender_id: gender[:id])
+      employee = Employee.create(email: 'test@gmail.com', 
+                                password: 'testing', 
+                                address_id: address[:id],
+                                first_name: 'first',
+                                last_name: 'last', 
+                                gender_id: gender[:id],
+                                employee_id: 'TM101')
       expect(employee.valid?).to eq true
     end
 
     it 'Employee must have non-empty email' do
-      employee = Employee.new(password: 'password', address_id: 1, gender_id: 1)
+      address = Address.create(line_one: 'home')
+      gender = Gender.create(title: 'male')
+      employee = Employee.create(password: 'testing', 
+                                address_id: address[:id],
+                                first_name: 'first',
+                                last_name: 'last', 
+                                gender_id: gender[:id],
+                                employee_id: 'TM101')
       expect(employee.save).to eq false
     end
 
     it 'Employee must have non-empty password' do
-      employee = Employee.new(email: 'test@gmail.com', address_id: 1, gender_id: 1)
+      address = Address.create(line_one: 'home')
+      gender = Gender.create(title: 'male')
+      employee = Employee.create(email: 'test@gmail.com', 
+                                address_id: address[:id],
+                                first_name: 'first',
+                                last_name: 'last', 
+                                gender_id: gender[:id],
+                                employee_id: 'TM101')
       expect(employee.save).to eq false
     end
     it 'Employee must have non-empty adress' do
-      employee = Employee.new(email: 'test@gmail.com', password: 'password', gender_id: 1)
+      gender = Gender.create(title: 'male')
+      employee = Employee.create(email: 'test@gmail.com', 
+                                password: 'testing', 
+                                first_name: 'first',
+                                last_name: 'last', 
+                                gender_id: gender[:id],
+                                employee_id: 'TM101')
       expect(employee.save).to eq false
     end
 
     it 'Employee must have non-empty gender' do
-      employee = Employee.new(email: 'test@gmail.com', password: 'password', address_id: 1)
+      address = Address.create(line_one: 'home')
+      employee = Employee.create(email: 'test@gmail.com', 
+                                password: 'testing', 
+                                first_name: 'first',
+                                last_name: 'last', 
+                                employee_id: 'TM101')
       expect(employee.save).to eq false
     end
 
@@ -67,7 +98,13 @@ describe Employee do
     it 'Employee attendances are recorded successfully in attendance model' do
       address = Address.create(line_one: 'home')
       gender = Gender.create(title: 'male')
-      employee = Employee.create(email: 'test@gmail.com', password: 'testing', address_id: address[:id], gender_id: gender[:id])
+      employee = Employee.create(email: 'test@gmail.com', 
+                                password: 'testing', 
+                                first_name: 'first',
+                                last_name: 'last', 
+                                address_id: address[:id],
+                                gender_id: gender[:id],
+                                employee_id: 'TM101')
       attendance_01 = Attendance.create(employee_id: employee[:id], date: '01-01-2023', attendance_status: 'present')
       attendance_02= Attendance.create(employee_id: employee[:id], date: '02-01-2023', attendance_status: 'absent')
       test_day = employee.attendances.select { |entry| entry[:date] == '02-01-2023'.to_date }
