@@ -74,11 +74,11 @@ describe Employee do
       @employee.save
     end
 
-    it 'Employee @addressis linked to the right entry from @addressmodel' do
+    it 'Employee address is linked to the right entry from address model' do
       expect(@employee.address[:line_one]).to  eq 'home'
     end
 
-    it 'Employee @addressis linked to the right @genderfrom @gendermodel' do
+    it 'Employee @addressis linked to the right gender from gender model' do
       expect(@employee.gender[:title]).to  eq 'male'
     end
 
