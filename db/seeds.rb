@@ -8,3 +8,9 @@
 
 # Creating initial admin to test the application
 Admin.create(email: 'jubin@gmail.com', password: 'jubin', first_name: 'Jubin', last_name: 'Jose', phone_number: '1234567890')
+
+# Adding all entries to gender table
+Gender.create(title: 'Male', status: 'active')
+Gender.create(title: 'Female', status: 'active')
+Gender.create(title: 'Other', status: 'active')
+Gender.create(title: 'Prefer not to say', status: 'active')
