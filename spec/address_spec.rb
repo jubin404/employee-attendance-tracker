@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Address do
   before do
-    @address = Address.new(line_one: 'home', country: 'india', pin: '1234')
+    @address = build(:address)
     expect(@address.save).to eq true
   end
 
@@ -14,14 +14,8 @@ describe Address do
   context 'When testing methods of Address model' do
     before do
       @address.save
-      @gender = Gender.create(title: 'male')
-      @employee = Employee.create(email: 'test@gmail.com', 
-                                  password: '123456', 
-                                  address_id: @address[:id],
-                                  first_name: 'first',
-                                  last_name: 'last', 
-                                  gender_id: @gender[:id],
-                                  employee_id: 'TM123')
+      @gender = create(:gender)
+      @employee = create(:employee)
     end
 
     it 'Employee address must be displayable' do

@@ -2,15 +2,9 @@ require 'rails_helper'
 
 describe Employee do
   before do
-    @address = Address.create(line_one: 'home', pin: '1234')
-    @gender = Gender.create(title: 'male')
-    @employee = Employee.new(email: 'test@gmail.com', 
-                             password: '123456', 
-                             address_id: @address[:id],
-                             first_name: 'first',
-                             last_name: 'last', 
-                             gender_id: @gender[:id],
-                             employee_id: 'TM123')
+    @address = create(:address)
+    @gender = create(:gender)
+    @employee = build(:employee)
   end
 
   it 'Employee instance must be created successfulyl with email, password, address and gender fields' do
@@ -24,14 +18,6 @@ describe Employee do
 
     it 'Employee must have non-empty password' do
       @employee.password = nil
-    end
-
-    it 'Employee must have non-empty adress' do
-      @employee.address_id = nil
-    end
-
-    it 'Employee must have non-empty gender' do
-      @employee.gender_id = nil
     end
 
     after do

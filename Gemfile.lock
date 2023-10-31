@@ -92,6 +92,11 @@ GEM
     devise-bootstrap-views (1.1.0)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.16.3)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
@@ -268,6 +273,7 @@ DEPENDENCIES
   countries
   devise
   devise-bootstrap-views (~> 1.0)
+  factory_bot_rails
   font-awesome-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
