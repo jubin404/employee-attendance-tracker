@@ -3,6 +3,8 @@ class Address < ApplicationRecord
   has_many :employees
   validate :country_validation
 
+  private
+  
   def country_validation
     return if country.nil?
 

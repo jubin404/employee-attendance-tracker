@@ -11,4 +11,12 @@ class Employee < ApplicationRecord
   belongs_to :address 
   belongs_to :gender
   has_many :attendances
+
+  private 
+
+  def display_name  #employee.displayename
+    "#{first_name} #{last_name}"
+  end
+
+  
 end
