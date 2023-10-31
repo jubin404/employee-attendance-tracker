@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Address do
   before do
-    @address = Address.new(line_one: 'home', country: 'india')
+    @address = Address.new(line_one: 'home', country: 'india', pin: '1234')
     expect(@address.save).to eq true
   end
 
@@ -25,7 +25,7 @@ describe Address do
     end
 
     it 'Employee address must be displayable' do
-      expect(@employee.address.display_address).to eq "#{@address[:line_one]}, #{@address[:country]}"
+      expect(@employee.address.display_address).to eq "#{@address[:line_one]}, #{@address[:country]}, #{@address[:pin]}"
     end
   end
 end

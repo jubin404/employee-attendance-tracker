@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Employee do
   before do
-    @address = Address.create(line_one: 'home')
+    @address = Address.create(line_one: 'home', pin: '1234')
     @gender = Gender.create(title: 'male')
     @employee = Employee.new(email: 'test@gmail.com', 
                              password: '123456', 
