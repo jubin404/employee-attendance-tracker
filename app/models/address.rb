@@ -3,8 +3,6 @@ class Address < ApplicationRecord
   has_many :employees
   validate :country_validation
 
-  private
-  
   def country_validation
     return if country.nil?
 
@@ -12,4 +10,7 @@ class Address < ApplicationRecord
     errors.add(:country, 'must have a valid country name') if valid_country.nil?
   end
   
+  def display_address
+    [line_one, line_two, city, country, pin].reject(&:nil?).join(", ")
+  end
 end

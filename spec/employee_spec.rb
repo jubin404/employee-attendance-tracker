@@ -5,12 +5,12 @@ describe Employee do
     @address = Address.create(line_one: 'home')
     @gender = Gender.create(title: 'male')
     @employee = Employee.new(email: 'test@gmail.com', 
-                            password: '123456', 
-                            address_id: @address[:id],
-                            first_name: 'first',
-                            last_name: 'last', 
-                            gender_id: @gender[:id],
-                            employee_id: 'TM123')
+                             password: '123456', 
+                             address_id: @address[:id],
+                             first_name: 'first',
+                             last_name: 'last', 
+                             gender_id: @gender[:id],
+                             employee_id: 'TM123')
   end
 
   it 'Employee instance must be created successfulyl with email, password, address and gender fields' do
@@ -69,9 +69,17 @@ describe Employee do
     end
   end
 
-  context 'When testing associations of Employee model' do
+  context 'When testing associations and methods of Employee model' do
     before do
       @employee.save
+    end
+
+    it 'Employee full name must be displayable' do
+      expect(@employee.display_name).to eq "#{@employee[:first_name]} #{@employee[:last_name]}"
+    end
+
+    it 'Employee id must be displayable' do
+      expect(@employee.display_id).to eq @employee[:employee_id]
     end
 
     it 'Employee address is linked to the right entry from address model' do
