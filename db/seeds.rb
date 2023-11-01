@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Creating initial admin to test the application
-Admin.create(email: 'jubin@gmail.com', password: 'jubin', first_name: 'Jubin', last_name: 'Jose', phone_number: '1234567890')
+Admin.create(email: 'jubin@gmail.com', password: 'password', first_name: 'Jubin', last_name: 'Jose', phone_number: '1234567890')
 
 # Adding all entries to gender table
 Gender.create(title: 'Male', status: 'active')
