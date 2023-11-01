@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
     resources :employee
+    resources :attendance
   end
 end
