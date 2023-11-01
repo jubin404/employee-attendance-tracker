@@ -2,9 +2,6 @@ require 'rails_helper'
 
 describe Attendance do
   before do
-    @address = create(:address)
-    @gender = create(:gender)
-    @employee = create(:employee)
     @attendance = build(:attendance)
   end
 
@@ -32,12 +29,12 @@ describe Attendance do
 
   context 'When testing methods of Attendance model' do
     before do
-      @attendance[:employee_id] = @employee[:id]
       @attendance.save
     end
 
     it 'Employee working hours on any day must be displayable' do
-      expect(@employee.attendances.first.working_hours).to eq (@attendance[:punch_out_time] - @attendance[:punch_in_time]) / 3600
+      employee = Employee.first
+      expect(employee.attendances.first.working_hours).to eq (@attendance[:punch_out_time] - @attendance[:punch_in_time]) / 3600
     end
   end
 end

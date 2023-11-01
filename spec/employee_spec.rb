@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe Employee do
   before do
-    @address = create(:address)
-    @gender = create(:gender)
     @employee = build(:employee)
   end
 
@@ -75,12 +73,14 @@ describe Employee do
     it 'Employee @addressis linked to the right gender from gender model' do
       expect(@employee.gender[:title]).to  eq 'male'
     end
+  end
 
+  context 'When testing methods of Employee model' do
     it 'Employee attendances are recorded successfully in attendance model' do
-      Attendance.create(employee_id: @employee[:id], date: '01-01-2023', attendance_status: 'present')
-      Attendance.create(employee_id: @employee[:id], date: '02-01-2023', attendance_status: 'absent')
-      test_day = @employee.attendances.select { |entry| entry[:date] == '02-01-2023'.to_date }
-      expect(test_day.first[:attendance_status]).to  eq 'absent'
+      create(:attendance)
+      employee = Employee.first
+      test_day = employee.attendances.select { |entry| entry[:date] == '01-01-2024'.to_date }
+      expect(test_day.first[:attendance_status]).to  eq 'present'
     end
   end
 end

@@ -13,9 +13,8 @@ describe Address do
 
   context 'When testing methods of Address model' do
     before do
-      @address.save
-      @gender = create(:gender)
       @employee = create(:employee)
+      address = Address.first
     end
 
     it 'Employee address must be displayable' do
