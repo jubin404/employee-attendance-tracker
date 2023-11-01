@@ -6,6 +6,5 @@ FactoryBot.define do
     last_name { 'last' }
     company_id { 'TM123' }
     association :gender, factory: :gender 
-    association :address, factory: :address
   end
 end

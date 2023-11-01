@@ -8,8 +8,8 @@ class Employee < ApplicationRecord
   validates :last_name, length: { minimum: 3 }
   validates :company_id, format: { with: /\A\ATM/, message: "must start with 'TM'" }
 
-  belongs_to :address 
   belongs_to :gender
+  has_many :addresses
   has_many :attendances
 
   def display_name

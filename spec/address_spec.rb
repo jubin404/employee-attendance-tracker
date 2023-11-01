@@ -13,12 +13,12 @@ describe Address do
 
   context 'When testing methods of Address model' do
     before do
-      @employee = create(:employee)
-      address = Address.first
+      @address.save
+      @employee = Employee.first
     end
 
     it 'Employee address must be displayable' do
-      expect(@employee.address.display_address).to eq "#{@address[:line_one]}, #{@address[:country]}, #{@address[:pin]}"
+      expect(@employee.addresses.first.display_address).to eq "#{@address[:line_one]}, #{@address[:country]}, #{@address[:pin]}"
     end
   end
 end

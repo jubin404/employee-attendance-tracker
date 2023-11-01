@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
 
-  has_many :employees
+  belongs_to :employee
   validates :pin, presence: true
   validate :country_validation
 

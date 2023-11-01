@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2023_10_26_131520) do
     t.string "city"
     t.string "pin"
     t.string "country"
+    t.integer "employee_id"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,7 +54,6 @@ ActiveRecord::Schema.define(version: 2023_10_26_131520) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.integer "address_id"
     t.integer "gender_id"
     t.string "company_id"
     t.datetime "created_at", precision: 6, null: false
