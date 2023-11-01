@@ -37,7 +37,7 @@ class DeviseCreateEmployees < ActiveRecord::Migration[6.1]
       t.string :phone_number
       t.integer :address_id
       t.integer :gender_id
-      t.string :employee_id
+      t.string :company_id
 
       t.timestamps null: false
     end

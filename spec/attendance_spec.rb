@@ -32,10 +32,11 @@ describe Attendance do
 
   context 'When testing methods of Attendance model' do
     before do
+      @attendance[:employee_id] = @employee[:id]
       @attendance.save
     end
 
-    xit 'Employee working hours on any day must be displayable' do
+    it 'Employee working hours on any day must be displayable' do
       expect(@employee.attendances.first.working_hours).to eq (@attendance[:punch_out_time] - @attendance[:punch_in_time]) / 3600
     end
   end

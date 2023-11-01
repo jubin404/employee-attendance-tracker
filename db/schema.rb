@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_10_26_131520) do
     t.string "phone_number"
     t.integer "address_id"
     t.integer "gender_id"
-    t.string "employee_id"
+    t.string "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_employees_on_email", unique: true

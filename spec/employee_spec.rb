@@ -47,7 +47,7 @@ describe Employee do
     end
 
     it 'Employee id must start with TM' do
-      @employee.employee_id = 'AM123'
+      @employee.company_id = 'AM123'
     end
 
     after do
@@ -65,7 +65,7 @@ describe Employee do
     end
 
     it 'Employee id must be displayable' do
-      expect(@employee.display_id).to eq @employee[:employee_id]
+      expect(@employee.display_id).to eq @employee[:company_id]
     end
 
     it 'Employee address is linked to the right entry from address model' do

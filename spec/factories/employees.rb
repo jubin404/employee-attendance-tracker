@@ -4,7 +4,7 @@ FactoryBot.define do
     password { '123456' }
     first_name { 'first' }
     last_name { 'last' }
-    employee_id { 'TM123' }
+    company_id { 'TM123' }
     association :gender, factory: :gender 
     association :address, factory: :address
   end
