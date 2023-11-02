@@ -66,11 +66,14 @@ describe Employee do
       expect(@employee.display_id).to eq @employee[:company_id]
     end
 
-    # it 'Employee address is linked to the right entry from address model' do
-    #   expect(@employee.address[:line_one]).to  eq 'home'
-    # end
+    it 'Employee address is linked to the right entry from address model' do
+      address = build(:address)
+      address.employee_id = @employee[:id]
+      address.save
+      expect(@employee.addresses.first[:line_one]).to  eq 'home'
+    end
 
-    it 'Employee @addressis linked to the right gender from gender model' do
+    it 'Employee address is linked to the right gender from gender model' do
       expect(@employee.gender[:title]).to  eq 'male'
     end
   end
