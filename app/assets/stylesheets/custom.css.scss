@@ -15,12 +15,6 @@ a, a:hover {
   color: black;
 }
 
-.container-custom {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 header {
   position: relative;
 }
@@ -43,7 +37,9 @@ header {
 
 .navbar-light .navbar-nav .nav-link, 
 .navbar-light .navbar-nav .nav-link:hover, 
-.navbar-light .navbar-nav .nav-link:focus {
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-brand:hover, 
+.navbar-light .navbar-brand:focus {
   color:white;
 }
 
@@ -67,7 +63,7 @@ header {
 
 .left-side-bar {
   width: 15%;
-  height: 100%;
+  min-height: 100%;
   border: 1px solid rgb(126, 126, 126);
   background-color: rgba(0, 0, 0, 0.05);   
  }
@@ -85,6 +81,7 @@ header {
  width: 100%;
  display: flex;
  justify-content: center;
+ flex-direction: column;
 }
 
 .main-content-header {
@@ -128,7 +125,6 @@ header {
 }
 
 footer {
-  position: absolute;
  display: flex;
  justify-content: end;
  align-items: center;
