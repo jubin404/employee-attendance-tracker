@@ -7,11 +7,8 @@
 </head>
 <body>
   <div class="main-content">
-    <div class="left-side-bar">
-      <a href="/" class="list-group-item active"> <span>Dashboard</span></a>
-      <a href="/admin/employee" class="list-group-item"> <span>Employees</span></a>
-      <a href="/admin/attendance" class="list-group-item"> <span>Attendances</span></a>
-    </div>
+    <%= render 'shared/admin/left_side_bar', dashboard: 'active' %>
+    
     <div class="right-side-content">
       <div class="container container-wrapper card">
         <div class="main-content-header">
