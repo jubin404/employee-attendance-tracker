@@ -17,10 +17,11 @@
             <form class="form-inline my-2 my-lg-0 main-content-header-input">
               <%= render 'admin/shared/search_bar' %>
             </form>
-            <button class="main-content-header-input btn btn-success">+ Add Employee</button>
+            <%= link_to '+ Add Employee', new_admin_employee_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
           </div>
         </div>
-        <%= render 'admin/employee/index/employee_list' %>        
+        <%= render 'admin/employee/index/add_employee_modal' %>     
+        <%= render 'admin/employee/index/employee_list' %>     
         <%= render 'shared/pagination' %>
       </div>
     </div>
