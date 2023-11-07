@@ -1,6 +1,14 @@
-module Admin
-
-  class EmployeeController < ApplicationController 
-  end
+class Admin::EmployeeController < ApplicationController
   
+  def index
+  end
+
+  def edit
+  end
+
+  def new
+  end
+
+  def show
+  end
 end

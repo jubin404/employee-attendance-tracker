@@ -1,6 +1,5 @@
-module Admin
-
-  class AttendanceController < ApplicationController 
-  end
+class Admin::AttendanceController < ApplicationController 
   
+  def index 
+  end
 end
