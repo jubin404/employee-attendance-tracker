@@ -48,12 +48,6 @@ header {
   font-size: 20px;
 }
 
-.cross-button {
-  height: 20px;
-  width: 20px;
-  align-items: center;
-}
-
 .main-content {
   display: flex;
   background-color: rgba(0, 0, 0, 0.075);
@@ -79,7 +73,7 @@ header {
 }
 
 .left-side-bar {
-  width: 15%;
+  width: 16%;
   min-height: 100%;
   background-color: rgba(0, 0, 0, 0.05);   
  }
