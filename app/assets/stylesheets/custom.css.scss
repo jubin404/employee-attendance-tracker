@@ -81,7 +81,7 @@ header {
 .left-side-bar {
   width: 15%;
   min-height: 100%;
-  border: 1px solid rgb(126, 126, 126);
+  // border: 1px solid rgb(126, 126, 126);
   background-color: rgba(0, 0, 0, 0.05);   
  }
  
@@ -92,6 +92,10 @@ header {
 .list-group-item.active  {
  background-color: black;
  border-color: black;
+}
+
+.list-group-item:first-child {
+  border-radius: 0;
 }
 
 .right-side-content {
