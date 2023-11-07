@@ -20,6 +20,12 @@ header {
   position: relative;
 }
 
+.buttons-list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 .calendar-icon {
   position: absolute;
   left: 0.8%;
