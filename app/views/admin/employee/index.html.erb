@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="main-content">
-    <%= render 'shared/admin/left_side_bar', employees: 'active' %>
+    <%= render 'admin/shared/left_side_bar', employees: 'active' %>
 
     <div class="right-side-content">
       <div class="container container-wrapper card">
@@ -15,7 +15,7 @@
           <h2>Employee List</h2>
           <div class="main-content-header-inputs">
             <form class="form-inline my-2 my-lg-0 main-content-header-input">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <%= render 'admin/shared/search_bar' %>
             </form>
             <button class="main-content-header-input btn btn-success">+ Add Employee</button>
           </div>
@@ -39,7 +39,7 @@
               <td>mark@gmail.com</td>
               <td>283738495</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -49,7 +49,7 @@
               <td>jacob@gmail.com</td>
               <td>4835978454</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -59,7 +59,7 @@
               <td>thomas@gmail.com</td>
               <td>7732939299</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
               <td>jerry@gmail.com</td>
               <td>7483748293</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -79,7 +79,7 @@
               <td>aparna@gmail.com</td>
               <td>5893443993</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -89,7 +89,7 @@
               <td>thesingh@gmail.com</td>
               <td>934839855</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
             <tr>
@@ -99,7 +99,7 @@
               <td>sanjay@gmail.com</td>
               <td>9334785749</td>
               <td>
-                <%= render partial: 'admin/employee/index/action_icons' %>
+                <%= render 'admin/employee/index/action_icons' %>
               </td>
             </tr>
           </tbody>

@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="main-content">
-    <%= render 'shared/admin/left_side_bar', attendances: 'active' %>
+    <%= render 'admin/shared/left_side_bar', attendances: 'active' %>
 
     <div class="right-side-content">
       <div class="container container-wrapper card">
@@ -15,16 +15,10 @@
           <h2>Attendance List</h2>
           <div class="main-content-header-inputs">
             <form class="form-inline my-2 my-lg-0 main-content-header-input">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search by employee" aria-label="Search">
+              <%= render 'admin/shared/search_bar', placeholder: 'Search by employee' %>
               <div class="form-row main-content-header-input">
-                <div class="form-group">
-                  <label for="inputStartDate">Start date</label>
-                  <input type="date" class="form-control" id="inputStartDate">
-                </div>
-                <div class="form-group">
-                  <label for="inputEndDate">End date</label>
-                  <input type="date" class="form-control" id="inputEndDate">
-                </div>
+                <%= render 'admin/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
+                <%= render 'admin/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
               </div>
               <button class="main-content-header-input btn btn-dark">Search</button>
             </form>
