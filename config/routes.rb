@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
     resources :employee
+    post 'employee/new', to: 'employee#create'
     resources :attendance
   end
 end

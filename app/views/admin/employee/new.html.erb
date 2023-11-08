@@ -15,13 +15,7 @@
           <h2>Add Employee</h2>
         </div>
         <div class="employee-information">
-          <form>
-            <%= render 'admin/employee/shared/employee_form', editable: true, action: 'placeholder' %>
-            <div class="main-content-footer col-md-12">
-              <button type="submit" class="btn btn-danger">Cancel</button>
-              <button type="submit" class="btn btn-success">Save</button>
-            </div>
-          </form>
+          <%= render 'admin/employee/new/employee_form', editable: true, action: 'placeholder' %>
         </div>
       </div>
     </div>
