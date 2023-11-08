@@ -13,14 +13,14 @@
         <div class="main-content-header">
           <h2>Employee Details</h2>
           <div class="main-content-header-inputs">
-            <button class="main-content-header-input btn btn-primary">Edit</button>
+            <%= link_to "Edit", edit_admin_employee_path(@employee), class: "main-content-header-input btn btn-primary" %>
             <button class="main-content-header-input btn btn-success">+ Add Attendance</button>
           </div>
         </div>
         <div class="employee-information">
           <form>
               <fieldset disabled="disabled">
-                <%= render 'admin/employee/shared/employee_form', editable: false, action: 'value' %>
+                <%= render 'admin/employee/show/employee_form', employee: @employee %>
               </fieldset>
           </form>
         </div>

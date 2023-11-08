@@ -18,7 +18,7 @@
       <td><%= employee[:email]%></td>
       <td><%= employee[:phone_number]%></td>
       <td>
-        <%= render 'admin/employee/index/action_icons' %>
+        <%= render 'admin/employee/index/action_icons', employee: employee %>
       </td>
     </tr>
   <% end %>

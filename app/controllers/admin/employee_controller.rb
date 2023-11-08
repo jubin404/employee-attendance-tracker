@@ -1,10 +1,21 @@
 class Admin::EmployeeController < Admin::BaseController
+  before_action :set_employee, only: [:show, :edit, :update, :destroy]
   
   def index
     @employees = Employee.all
   end
 
   def edit
+  end
+
+  def update
+    @address = Address.find(params[:id])
+    if @employee.update(employee_params) && @address.update(address_params)
+      flash[:notice] = "Employee was updated successfully."
+      redirect_to @employee
+    else
+      render 'edit'
+    end
   end
 
   def new
@@ -31,7 +42,14 @@ class Admin::EmployeeController < Admin::BaseController
   
   def show
   end
+
+  def destroy
+    @employee.destroy
+    redirect_to admin_employee_index_path
+  end
   
+  private
+
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :email, :phone_number, :password, :gender_id)
   end
@@ -49,5 +67,9 @@ class Admin::EmployeeController < Admin::BaseController
 
   def employee_company_id
     "TM0#{@employee[:id]}"
+  end
+
+  def set_employee
+    @employee = Employee.find(params[:id])
   end
 end

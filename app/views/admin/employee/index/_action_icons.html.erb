@@ -1,5 +1,11 @@
 <div class="action-icons">
-  <a href="#"><i class="bi bi-eye"></i></a>
-  <a href="#"><i class="bi bi-pencil"></i></a>
-  <a href="#"><i class="bi bi-trash"></i></a>
+  <%= link_to admin_employee_path(employee) do %>
+    <i class="bi bi-eye"></i>
+  <% end %>
+  <%= link_to edit_admin_employee_path(employee) do %>
+    <i class="bi bi-pencil"></i>
+  <% end %>
+  <%= link_to admin_employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="bi bi-trash"></i>
+  <% end %>
 </div>
