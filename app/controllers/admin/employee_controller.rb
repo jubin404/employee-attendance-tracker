@@ -1,6 +1,7 @@
 class Admin::EmployeeController < Admin::BaseController
   
   def index
+    @employees = Employee.all
   end
 
   def edit

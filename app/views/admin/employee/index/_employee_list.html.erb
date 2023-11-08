@@ -10,75 +10,17 @@
     </tr>
   </thead>
   <tbody>
+  <% @employees.each_with_index do |employee, index| %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mark@gmail.com</td>
-      <td>283738495</td>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= employee[:first_name]%></td>
+      <td><%= employee[:last_name]%></td>
+      <td><%= employee[:email]%></td>
+      <td><%= employee[:phone_number]%></td>
       <td>
         <%= render 'admin/employee/index/action_icons' %>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>jacob@gmail.com</td>
-      <td>4835978454</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Thomas</td>
-      <td>Piper</td>
-      <td>thomas@gmail.com</td>
-      <td>7732939299</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Jerry</td>
-      <td>Mathew</td>
-      <td>jerry@gmail.com</td>
-      <td>7483748293</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Aparna</td>
-      <td>Hari</td>
-      <td>aparna@gmail.com</td>
-      <td>5893443993</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Thesingh</td>
-      <td>Raja</td>
-      <td>thesingh@gmail.com</td>
-      <td>934839855</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Sanjay</td>
-      <td>Samsung</td>
-      <td>sanjay@gmail.com</td>
-      <td>9334785749</td>
-      <td>
-        <%= render 'admin/employee/index/action_icons' %>
-      </td>
-    </tr>
+  <% end %>
   </tbody>
 </table>
