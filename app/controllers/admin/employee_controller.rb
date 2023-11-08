@@ -16,8 +16,9 @@ class Admin::EmployeeController < Admin::BaseController
 
   def create    
     @employee = Employee.new(employee_params)
-    @employee[:company_id] = employee_company_id
+    @employee[:company_id] = 'TM-TEMP'
     if @employee.save
+      @employee.update(company_id: employee_company_id)
       save_employee_address
       flash[:notice] = "Employee was added successfully."
       redirect_to admin_employee_index_path
@@ -46,6 +47,6 @@ class Admin::EmployeeController < Admin::BaseController
   end
 
   def employee_company_id
-    'TM101'
+    "TM0#{@employee[:id]}"
   end
 end
