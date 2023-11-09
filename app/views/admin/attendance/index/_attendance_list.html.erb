@@ -10,61 +10,16 @@
     </tr>
   </thead>
   <tbody>
+  <% @attendances.each_with_index do |attendance, index| %>
+    <% employee_name = Employee.find(attendance[:employee_id]).display_name %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= employee_name %></td>
+      <td><%= attendance[:date].strftime("%d-%m-%Y") %></td>
+      <td><%= attendance[:punch_in_time].strftime("%H:%M") %></td>
+      <td><%= attendance[:punch_out_time].strftime("%H:%M") %></td>
+      <td><%= attendance[:attendance_status].capitalize %></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Thomas</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Jerry</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Aparna</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Thesingh</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Sanjay</td>
-      <td>01/12/2023</td>
-      <td>09:00 am</td>
-      <td>06:00 pm</td>
-      <td>Present</td>
-    </tr>
+  <% end %>
   </tbody>
 </table>

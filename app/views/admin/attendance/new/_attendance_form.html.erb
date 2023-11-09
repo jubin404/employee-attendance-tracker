@@ -1,0 +1,43 @@
+<%= form_with(model: @attendance, url: new_admin_attendance_path, local: true) do |f| %>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <%= f.label "Employee id" %><br/>
+    <%= f.text_field :employee_id, class: "form-control", placeholder: "01"%>
+  </div>
+  <div class="form-group col-md-6">
+    <%= f.label :date %><br/>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <%= f.label :punch_in_time %><br/>
+    <%= f.time_field :punch_in_time, class: "form-control" %>
+  </div>
+  <div class="form-group col-md-6">
+    <%= f.label :punch_out_time %><br/>
+    <%= f.time_field :punch_out_time, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <%= f.label :attendance_status %><br/>
+    <%= f.text_field :attendance_status, class: "form-control", placeholder: "present"%>
+  </div>
+  <div class="form-group col-md-6">
+    <%= f.label :status %><br/>
+    <%= f.text_field :status, class: "form-control", placeholder: "active"%>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="main-content-footer col-md-12">
+    <%= button_tag "Reset", type: :reset , class: "btn btn-danger" %>
+    <%= f.submit "Save", class: "btn btn-success" %>
+  </div>
+</div>
+
+<% end %>
