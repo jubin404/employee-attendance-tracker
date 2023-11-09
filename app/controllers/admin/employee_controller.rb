@@ -9,7 +9,7 @@ class Admin::EmployeeController < Admin::BaseController
   end
 
   def update
-    @address = Address.find_by(employee_id: params[:id])
+    @address = Address.find_by(employee_id: params[:id], status: 'active')
     if @employee.update(employee_params) #&& @address.update(address_params)
       flash[:notice] = "Employee was updated successfully."
       redirect_to admin_employee_path(@employee)
