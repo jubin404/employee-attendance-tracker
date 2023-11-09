@@ -10,9 +10,9 @@ class Admin::EmployeeController < Admin::BaseController
 
   def update
     @address = Address.find(params[:id])
-    if @employee.update(employee_params) && @address.update(address_params)
+    if @employee.update(employee_params) #&& @address.update(address_params)
       flash[:notice] = "Employee was updated successfully."
-      redirect_to @employee
+      redirect_to admin_employee_path(@employee)
     else
       render 'edit'
     end
