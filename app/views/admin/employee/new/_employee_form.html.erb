@@ -33,37 +33,39 @@
   </div>
 </div>
 
+<%= f.fields_for :address do |address_form| %>
 <div class="form-row">
   <div class="form-group col-md-12">
-    <%= f.label "Address" %><br/>
-    <%= f.text_field :line_one, class: "form-control", placeholder: "1234 Main St"%>
+    <%= address_form.label "Address" %><br/>
+    <%= address_form.text_field :line_one, class: "form-control", placeholder: "1234 Main St"%>
   </div>
 </div>
 
 <div class="form-row">
   <div class="form-group col-md-12">
-    <%= f.label "Address (line 2)" %><br/>
-    <%= f.text_field :line_two, class: "form-control", placeholder: "Apartment or street"%>
+    <%= address_form.label "Address (line 2)" %><br/>
+    <%= address_form.text_field :line_two, class: "form-control", placeholder: "Apartment or street"%>
   </div>
 </div>
 
 <div class="form-row">
   <div class="form-group col-md-6">
-    <%= f.label :city %><br/>
-    <%= f.text_field :city, class: "form-control", placeholder: "Trivandrum"%>
+    <%= address_form.label :city %><br/>
+    <%= address_form.text_field :city, class: "form-control", placeholder: "Trivandrum"%>
   </div>
   <div class="form-group col-md-6">
-    <%= f.label :pin %><br/>
-    <%= f.text_field :pin, class: "form-control", placeholder: "10012"%>
+    <%= address_form.label :pin %><br/>
+    <%= address_form.text_field :pin, class: "form-control", placeholder: "10012"%>
   </div>
 </div>
 
 <div class="form-row">
   <div class="form-group col-md-6">
-    <%= f.label :country %><br/>
-    <%= f.text_field :country, class: "form-control", placeholder: "India"%>
+    <%= address_form.label :country %><br/>
+    <%= address_form.text_field :country, class: "form-control", placeholder: "India"%>
   </div>
 </div>
+<% end %>
 
 <div class="form-row">
   <div class="main-content-footer col-md-12">

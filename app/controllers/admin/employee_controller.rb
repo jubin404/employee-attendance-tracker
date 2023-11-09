@@ -9,8 +9,7 @@ class Admin::EmployeeController < Admin::BaseController
   end
 
   def update
-    @address = Address.find_by(employee_id: params[:id], status: 'active')
-    if @employee.update(employee_params) #&& @address.update(address_params)
+    if @employee.update(employee_params) && employee_address.update(address_params)
       flash[:notice] = "Employee was updated successfully."
       redirect_to admin_employee_path(@employee)
     else
@@ -55,7 +54,7 @@ class Admin::EmployeeController < Admin::BaseController
   end
 
   def address_params
-    params.require(:employee).permit(:line_one, :line_two, :city, :pin, :country)
+    params.require(:employee).require(:address).permit(:line_one, :line_two, :city, :pin, :country)
   end
 
   def save_employee_address
@@ -71,5 +70,9 @@ class Admin::EmployeeController < Admin::BaseController
 
   def set_employee
     @employee = Employee.find(params[:id])
+  end
+
+  def employee_address
+    @employee.addresses.find_by(status: 'active')
   end
 end
