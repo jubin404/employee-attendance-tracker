@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @employees.each_with_index do |employee, index| %>
+  <% @employees.reverse.each_with_index do |employee, index| %>
     <tr>
       <th scope="row"><%= index + 1 %></th>
       <td><%= employee[:first_name]%></td>
