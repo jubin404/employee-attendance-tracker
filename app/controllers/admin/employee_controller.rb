@@ -2,6 +2,7 @@ class Admin::EmployeeController < Admin::BaseController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   
   def index
+    @employee = Employee.new
     @employees = Employee.all
   end
 
