@@ -14,7 +14,7 @@
           <h2>Employee Details</h2>
           <div class="main-content-header-inputs">
             <%= link_to "Edit", edit_admin_employee_path(@employee), class: "main-content-header-input btn btn-primary" %>
-            <button class="main-content-header-input btn btn-success">+ Add Attendance</button>
+            <%= link_to "+ Add Attendance", new_admin_attendance_path(attendance: {employee_id: @employee, employee_name: @employee.display_name}), class: "main-content-header-input btn btn-success" %>
           </div>
         </div>
         <div class="employee-information">
