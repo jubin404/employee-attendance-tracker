@@ -2,14 +2,18 @@
 
 <div class="form-row">
   <% if @attendance_params %>
-    <div class="form-group col-md-6">
-      <%= f.label "Employee id" %><br/>
+    <div class="form-group col-md-3">
+      <%= f.label "Company id" %><br/>
       <%= f.text_field :employee_id, class: "form-control", value: @attendance_params[:employee_id] %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label "Employee name" %><br/>
+      <%= f.text_field :employee_name, class: "form-control", value: @attendance_params[:employee_name], disabled: true %>
     </div>
   <% else %>
     <div class="form-group col-md-6">
-      <%= f.label "Employee id" %><br/>
-      <%= f.text_field :employee_id, class: "form-control", placeholder: "01"%>
+      <%= f.label "Company id" %><br/>
+      <%= f.text_field :employee_id, class: "form-control", placeholder: "TM0XX"%>
     </div>
   <% end %>
 
@@ -34,10 +38,6 @@
   <div class="form-group col-md-6">
     <%= f.label :attendance_status %><br/>
     <%= f.text_field :attendance_status, class: "form-control", placeholder: "present"%>
-  </div>
-  <div class="form-group col-md-6">
-    <%= f.label :status %><br/>
-    <%= f.text_field :status, class: "form-control", placeholder: "active"%>
   </div>
 </div>
 

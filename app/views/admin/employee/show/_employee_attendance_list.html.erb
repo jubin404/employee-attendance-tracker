@@ -13,8 +13,8 @@
     <tr>
       <th scope="row"><%= index + 1 %></th>
       <td><%= attendance[:date].strftime("%d-%m-%Y") %></td>
-      <td><%= attendance[:punch_in_time].strftime("%H:%M") %></td>
-      <td><%= attendance[:punch_out_time].strftime("%H:%M") %></td>
+      <td><%= attendance[:punch_in_time]&.strftime("%H:%M") %></td>
+      <td><%= attendance[:punch_out_time]&.strftime("%H:%M") %></td>
       <td><%= attendance[:attendance_status].capitalize %></td>
     </tr>
   <% end %>
