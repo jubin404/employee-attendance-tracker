@@ -27,10 +27,11 @@
           </form>
         </div>
 
-        <% unless @employee.attendances.empty? %>
+        <% unless @employee_attendances.empty? %>
         <hr>
           <h2>Attendance Overview</h2>
           <%= render 'admin/employee/show/employee_attendance_list' %>
+          <%= render 'shared/pagination', item: @employee_attendances %>
         <% end %>
       </div>
     </div>

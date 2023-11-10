@@ -41,6 +41,7 @@ class Admin::EmployeeController < Admin::BaseController
   end
   
   def show
+    @employee_attendances = @employee.attendances.page(params[:page]).order(created_at: :desc)
   end
 
   def destroy
