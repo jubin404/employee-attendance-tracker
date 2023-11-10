@@ -24,9 +24,12 @@
               </fieldset>
           </form>
         </div>
+        
+        <% unless @employee.attendances.empty? %>
         <hr>
-        <h2>Attendance Overview</h2>
-        <%= render 'admin/employee/show/employee_attendance_list' %>
+          <h2>Attendance Overview</h2>
+          <%= render 'admin/employee/show/employee_attendance_list' %>
+        <% end %>
       </div>
     </div>
   </div>

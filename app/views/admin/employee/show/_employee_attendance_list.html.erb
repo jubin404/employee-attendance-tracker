@@ -9,54 +9,14 @@
     </tr>
   </thead>
   <tbody>
+  <% @employee.attendances.reverse.each_with_index do |attendance, index| %>
     <tr>
-      <th scope="row">1</th>
-      <td>01/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= attendance[:date].strftime("%d-%m-%Y") %></td>
+      <td><%= attendance[:punch_in_time].strftime("%H:%M") %></td>
+      <td><%= attendance[:punch_out_time].strftime("%H:%M") %></td>
+      <td><%= attendance[:attendance_status].capitalize %></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>02/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>03/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>04/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>05/12/2024</td>
-      <td>--</td>
-      <td>--</td>
-      <td>Absent</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>06/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>07/12/2024</td>
-      <td>10:00 am</td>
-      <td>07:00 pm</td>
-      <td>Present</td>
-    </tr>
+  <% end %>
   </tbody>
 </table>
