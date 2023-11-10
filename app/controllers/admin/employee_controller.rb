@@ -3,7 +3,7 @@ class Admin::EmployeeController < Admin::BaseController
   
   def index
     @employee = Employee.new
-    @employees = Employee.all
+    @employees = Employee.all.page(params[:page]).order(created_at: :desc)
   end
 
   def edit

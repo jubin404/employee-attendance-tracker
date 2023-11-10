@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @attendances.reverse.each_with_index do |attendance, index| %>
+  <% @attendances.each_with_index do |attendance, index| %>
     <% employee_name = Employee.find(attendance[:employee_id]).display_name %>
     <tr>
       <th scope="row"><%= index + 1 %></th>

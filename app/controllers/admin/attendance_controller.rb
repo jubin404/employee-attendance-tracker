@@ -1,7 +1,7 @@
 class Admin::AttendanceController < ApplicationController 
   
   def index 
-    @attendances = Attendance.all
+    @attendances = Attendance.all.page(params[:page]).order(created_at: :desc)
   end
 
   def new
