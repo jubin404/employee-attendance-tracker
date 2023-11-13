@@ -157,6 +157,16 @@ header {
  margin-top: 30px;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination.justify-content-center {
+  position: absolute;
+  bottom: 0;
+}
+
 .employee-information, .attendance-information {
   margin: 20px 10px;
 }
