@@ -1,4 +1,5 @@
 class Admin::AttendanceController < ApplicationController 
+  before_action :set_attendance, only: [:edit, :update, :destroy]
   
   def index 
     @attendances = Attendance.all.page(params[:page]).order(created_at: :desc)
@@ -23,10 +24,32 @@ class Admin::AttendanceController < ApplicationController
     end
   end
 
+  def edit 
+    @employee = Employee.find(@attendance[:employee_id])
+  end
+
+  def update
+    if @attendance.update(attendance_update_params)
+      flash[:notice] = "Attendance was updated successfully."
+      redirect_to admin_attendance_index_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @attendance.destroy
+    redirect_to admin_attendance_index_path
+  end
+
   private
 
   def attendance_params 
     params.require(:attendance).permit(:employee_id, :attendance_status, :date, :punch_in_time, :punch_out_time)
+  end
+
+  def attendance_update_params 
+    params.require(:attendance).permit(:attendance_status, :date, :punch_in_time, :punch_out_time)
   end
 
   def employee_attendance_params
@@ -39,5 +62,9 @@ class Admin::AttendanceController < ApplicationController
 
   def employee_from_company_id
     @attendance[:employee_id] = Employee.find_by(company_id: attendance_params[:employee_id])[:id]
+  end
+
+  def set_attendance
+    @attendance = Attendance.find(params[:id])
   end
 end

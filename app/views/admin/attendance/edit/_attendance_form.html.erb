@@ -1,22 +1,14 @@
-<%= form_with(model: @attendance, url: admin_attendance_path, method: :put, local: true) do |f| %>
+<%= form_with(model: @attendance, url: admin_attendance_path, method: :patch, local: true) do |f| %>
 
 <div class="form-row">
-  <% if @attendance_params %>
     <div class="form-group col-md-3">
       <%= f.label "Company id" %><br/>
-      <%= f.text_field :employee_id, class: "form-control", value: @attendance_params[:employee_id] %>
+      <%= f.text_field :employee_id, class: "form-control", value: @employee[:company_id], disabled: true %>
     </div>
     <div class="form-group col-md-3">
       <%= f.label "Employee name" %><br/>
-      <%= f.text_field :employee_name, class: "form-control", value: @attendance_params[:employee_name], disabled: true %>
+      <%= f.text_field :employee_name, class: "form-control", value: @employee.display_name, disabled: true %>
     </div>
-  <% else %>
-    <div class="form-group col-md-6">
-      <%= f.label "Company id" %><br/>
-      <%= f.text_field :employee_id, class: "form-control", placeholder: "TM0XX"%>
-    </div>
-  <% end %>
-
   <div class="form-group col-md-6">
     <%= f.label :date %><br/>
     <%= f.date_field :date, class: "form-control" %>

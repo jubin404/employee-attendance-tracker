@@ -1,0 +1,8 @@
+<div class="action-icons">
+  <%= link_to edit_admin_attendance_path(attendance) do %>
+    <i class="bi bi-pencil"></i>
+  <% end %>
+  <%= link_to admin_attendance_path(attendance), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="bi bi-trash"></i>
+  <% end %>
+</div>
