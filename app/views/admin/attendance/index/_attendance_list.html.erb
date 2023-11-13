@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Company id</th>
       <th scope="col">Employee</th>
       <th scope="col">Date</th>
       <th scope="col">Punch in time</th>
@@ -12,8 +13,10 @@
   <tbody>
   <% @attendances.each_with_index do |attendance, index| %>
     <% employee_name = Employee.find(attendance[:employee_id]).display_name %>
+    <% company_id = Employee.find(attendance[:employee_id])[:company_id] %>
     <tr>
       <th scope="row"><%= index + 1 %></th>
+      <td><%= company_id %></td>
       <td><%= employee_name %></td>
       <td><%= attendance[:date].strftime("%d-%m-%Y") %></td>
       <td><%= attendance[:punch_in_time]&.strftime("%H:%M") %></td>
