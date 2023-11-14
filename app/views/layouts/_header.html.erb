@@ -1,9 +1,11 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light px-5 justify-content-between navbar-custom">
-    <a class="navbar-brand" href="/">
-      <i class="bi bi-calendar-check-fill calendar-icon"></i>
-      Attendance Tracker
-    </a>
+      <%= link_to (current_admin ? admin_dashboard_path : 
+                  (current_employee ? dashboard_path : root_path)), 
+                  class: "navbar-brand" do %>
+        <i class="bi bi-calendar-check-fill calendar-icon"></i>
+        Attendance Tracker
+      <% end %>
     <% if current_employee || current_admin %>
     <div id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
