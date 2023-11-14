@@ -1,5 +1,10 @@
-<h1>Welcome to Employee Attendance Tracker</h1>
-
-<!-- placeholder buttons -->
-<button>Log in as Employee</button>
-<button>Log in as Admin</button>
+<div class="main-content session-page">
+  <div class="session">
+    <h1>Welcome to Employee Attendance Tracker</h1>
+    
+    <div class="session-buttons">
+        <%= link_to "Log in as Employee", new_employee_session_path, class: "btn btn-outline-primary" %>
+        <%= link_to "Log in as Admin", new_admin_session_path, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>
