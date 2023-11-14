@@ -17,8 +17,8 @@ a, a:hover {
   justify-content: center;
   align-items: center;
   top: 100px;
-  left: 47%;
-  background-color: white;
+  left: 45%;
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
 }
 
@@ -44,6 +44,24 @@ a, a:hover {
 header {
   height: 9vh;
   position: relative;
+}
+
+.session-page {
+  justify-content: center;
+  align-items: center;
+}
+
+.session {
+  padding: 100px;
+  background-color: transparent;
+}
+
+.session div {
+  margin: 10px;
+}
+
+#error_explanation h2{
+  font-size: 25px;
 }
 
 .buttons-list {
