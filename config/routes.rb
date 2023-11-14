@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     post 'attendance/new', to: 'attendance#create'
   end
 
-  get 'dashboard', to: 'employee/dashboard#index'
+  scope module: 'employee' do
+  get 'dashboard', to: 'dashboard#index'
+  end
 end
