@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+</head>
+<body>
+  <div class="main-content">
+    <%= render 'admin/shared/left_side_bar', profile: 'active' %>
+
+    <div class="right-side-content">
+      <div class="container container-wrapper card">
+        <div class="main-content-header">
+          <h2>Edit Profile</h2>
+        </div>
+        <div class="employee-information">
+          <%= render 'employee/profile/edit/employee_form', employee: current_employee %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   end
 
   scope module: 'employee' do
-  get 'dashboard', to: 'dashboard#index'
-  resources :attendance 
-  resources :profile
+    get 'dashboard', to: 'dashboard#index'
+    resources :attendance 
+    get 'profile', to: 'profile#index'
+    get 'profile/edit', to: 'profile#edit'
+    patch 'profile/edit', to: 'profile#update'
   end
 end
