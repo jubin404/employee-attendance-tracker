@@ -13,7 +13,20 @@
       <div class="container container-wrapper card">
         <div class="main-content-header">
           <h2>Attendance List</h2>
+          <div class="main-content-header-inputs">
+            <form class="form-inline my-2 my-lg-0 main-content-header-input">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <div class="form-row main-content-header-input">
+                <%= render 'employee/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
+                <%= render 'employee/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
+              </div>
+              <button class="main-content-header-input btn btn-success">Mark Attendance</button>
+            </form>
+          </div>
         </div>
+        <%= render 'employee/attendance/index/attendance_list' %>
+        <%= render 'shared/pagination', item: @attendances %>
+        <button class="btn btn-danger export-button">Export</button>
       </div>
     </div>
   </div>

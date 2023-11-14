@@ -203,6 +203,13 @@ header {
   margin: 10px;
 }
 
+.export-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 50px;
+}
+
 footer {
  display: flex;
  justify-content: end;
