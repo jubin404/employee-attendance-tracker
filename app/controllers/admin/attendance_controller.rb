@@ -1,4 +1,4 @@
-class Admin::AttendanceController < ApplicationController 
+class Admin::AttendanceController < Admin::BaseController 
   before_action :set_attendance, only: [:edit, :update, :destroy]
   
   def index 
