@@ -194,7 +194,7 @@ header {
   margin: 5px;
 }
 
-.dashboard-cards {
+.dashboard-cards, .basic-information {
   display: flex;
   column-gap: 15px;
   margin: 20px;
@@ -204,6 +204,10 @@ header {
   display: flex;
   column-gap: 15px;
   margin: 20px;
+}
+
+.basic-information .display-4 {
+  font-size: 2rem;
 }
 
 .dashboard-graph {

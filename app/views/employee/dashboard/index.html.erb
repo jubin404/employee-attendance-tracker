@@ -16,8 +16,8 @@
         </div>
         <div class="dashboard-cards">
           <%= render 'employee/dashboard/index/dashboard_card', title: '20', description:'Working Days' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: '18', description:'Present Days' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: '2', description:'Absent Days' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.present_days_count, description:'Present Days' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.absent_days_count, description:'Absent Days' %>
           <%= render 'employee/dashboard/index/dashboard_card', title: '10', description:'Holidays' %>
         </div>
         <div class="dashboard-graphs">
@@ -25,11 +25,11 @@
           <%= render 'employee/dashboard/index/dashboard_graph' %>
         </div>
         <hr>
-        <div class="dashboard-cards">
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'ID', description:'TM101' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Name', description:'Aparna Hari' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Email', description:'aparna@gmail.com' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Phone Number', description:'34784788929' %>
+        <div class="basic-information">
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'ID', description: current_employee[:company_id] %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Name', description: current_employee.display_name %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Email', description: current_employee[:email] %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Phone Number', description: current_employee[:phone_number] %>
         </div>
       </div>
     </div>
