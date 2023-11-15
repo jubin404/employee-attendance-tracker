@@ -21,8 +21,8 @@
           <%= render 'employee/dashboard/index/dashboard_card', title: '10', description:'Holidays' %>
         </div>
         <div class="dashboard-graphs">
-          <%= render 'employee/dashboard/index/dashboard_graph' %>
-          <%= render 'employee/dashboard/index/dashboard_graph' %>
+          <%= render 'employee/dashboard/index/dashboard_graph', type: 'line' %>
+          <%= render 'employee/dashboard/index/dashboard_graph', type: 'pie' %>
         </div>
         <hr>
         <div class="basic-information">
