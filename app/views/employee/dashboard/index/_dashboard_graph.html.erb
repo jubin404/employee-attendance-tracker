@@ -3,6 +3,6 @@
   <div class="card-body dashboard-graph">
     <% working_hours_array = @attendances.map {|day| [day[:date],day.working_hours]} %>
     <%= line_chart working_hours_array if type == 'line'%>
-    <%= pie_chart @attendances.group(:attendance_status).count, colors: ["#b00", "#666"]  if type == 'pie'%>
+    <%= pie_chart @attendances.group(:attendance_status).count, colors: ["#6495ED", "#666"]  if type == 'pie'%>
   </div>
 </div>
