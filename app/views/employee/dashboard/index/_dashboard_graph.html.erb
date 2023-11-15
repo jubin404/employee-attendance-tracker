@@ -1,6 +1,7 @@
 <div class="card w-50">
   <div class="card-body dashboard-graph">
-    <%= line_chart @attendances.group_by_day(:date).count if type == 'line'%>
+    <% working_hours_array = @attendances.map {|day| [day[:date],day.working_hours]} %>
+    <%= line_chart working_hours_array if type == 'line'%>
     <%= pie_chart @attendances.group(:attendance_status).count if type == 'pie'%>
   </div>
 </div>

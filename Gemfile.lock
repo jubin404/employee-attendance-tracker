@@ -103,8 +103,6 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    groupdate (6.4.0)
-      activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -291,7 +289,6 @@ DEPENDENCIES
   devise-bootstrap-views (~> 1.0)
   factory_bot_rails
   font-awesome-rails
-  groupdate
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
