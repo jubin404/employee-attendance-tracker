@@ -35,7 +35,7 @@ class Admin::EmployeeController < Admin::BaseController
       flash[:notice] = "Employee was added successfully."
       redirect_to admin_employee_index_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:notice] = @employee.errors.full_messages
       render 'new'
     end
   end

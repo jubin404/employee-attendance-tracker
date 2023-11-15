@@ -19,7 +19,7 @@ class Admin::AttendanceController < Admin::BaseController
       flash[:notice] = "Attendance was added successfully."
       redirect_to admin_attendance_index_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:notice] = @attendance.errors.full_messages
       render 'new'
     end
   end

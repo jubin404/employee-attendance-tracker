@@ -1,5 +1,11 @@
 <div class="message btn btn-outline-dark">
   <% flash.each do |name, msg| %>
-    <%= msg %>
+    <% if msg.kind_of?(Array) %>
+        <% msg.each do |error| %>
+          <p><%= error %> </p>
+        <% end %>
+    <% else %>
+      <%= msg %>
+    <% end %>
   <% end %>  
 </div>

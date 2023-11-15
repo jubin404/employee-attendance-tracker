@@ -13,13 +13,15 @@ a, a:hover {
 
 .message {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 1;
   top: 100px;
   left: 45%;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
+}
+
+.message p:last-child {
+  margin: 0;
 }
 
 .field_with_errors {

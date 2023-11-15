@@ -22,7 +22,7 @@ class Employee::AttendanceController < Employee::BaseController
       flash[:notice] = "Attendance was added successfully."
       redirect_to attendance_index_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:notice] = @attendance.errors.full_messages
       render 'new'
     end
   end
