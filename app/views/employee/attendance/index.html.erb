@@ -20,10 +20,11 @@
                 <%= render 'employee/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
                 <%= render 'employee/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
               </div>
-              <button class="main-content-header-input btn btn-success">Mark Attendance</button>
+              <%= link_to 'Mark Attendance', new_attendance_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
             </form>
           </div>
         </div>
+        <%= render 'employee/attendance/new/mark_attendance_modal' %>     
         <%= render 'employee/attendance/index/attendance_list' %>
         <%= render 'shared/pagination', item: @attendances %>
         <button class="btn btn-danger export-button">Export</button>
