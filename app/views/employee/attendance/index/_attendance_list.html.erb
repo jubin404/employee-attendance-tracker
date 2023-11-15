@@ -5,6 +5,7 @@
       <th scope="col">Date</th>
       <th scope="col">Punch in time</th>
       <th scope="col">Punch out time</th>
+      <th scope="col">Working Hours</th>
       <th scope="col">Status</th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <td><%= attendance[:date].strftime("%d-%m-%Y") %></td>
       <td><%= attendance[:punch_in_time]&.strftime("%H:%M") %></td>
       <td><%= attendance[:punch_out_time]&.strftime("%H:%M") %></td>
+      <td><%= attendance.working_hours %></td>
       <td><%= attendance[:attendance_status].capitalize %></td>
     </tr>
   <% end %>

@@ -14,6 +14,7 @@ class Attendance < ApplicationRecord
   end
 
   def working_hours
-    (punch_out_time - punch_in_time) / 3600
+    return 0 if punch_out_time.nil?
+    (punch_out_time - punch_in_time) / 3600 
   end
 end
