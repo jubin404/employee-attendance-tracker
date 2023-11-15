@@ -14,6 +14,23 @@
         <div class="main-content-header">
           <h2>Dashboard</h2>
         </div>
+        <div class="dashboard-cards">
+          <%= render 'employee/dashboard/index/dashboard_card', title: '20', description:'Working Days' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: '18', description:'Present Days' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: '2', description:'Absent Days' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: '10', description:'Holidays' %>
+        </div>
+        <div class="dashboard-graphs">
+          <%= render 'employee/dashboard/index/dashboard_graph' %>
+          <%= render 'employee/dashboard/index/dashboard_graph' %>
+        </div>
+        <hr>
+        <div class="dashboard-cards">
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'ID', description:'TM101' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Name', description:'Aparna Hari' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Email', description:'aparna@gmail.com' %>
+          <%= render 'employee/dashboard/index/dashboard_card', title: 'Phone Number', description:'34784788929' %>
+        </div>
       </div>
     </div>
   </div>
