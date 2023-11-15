@@ -7,11 +7,29 @@
 </head>
 <body>
   <div class="main-content">
+    <%= render 'employee/shared/left_side_bar', attendance: 'active' %>
+
+    <div class="right-side-content">
       <div class="container container-wrapper card">
         <div class="main-content-header">
           <h2>Attendance List</h2>
+          <div class="main-content-header-inputs">
+            <form class="form-inline my-2 my-lg-0 main-content-header-input">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <div class="form-row main-content-header-input">
+                <%= render 'employee/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
+                <%= render 'employee/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
+              </div>
+              <%= link_to 'Mark Attendance', new_attendance_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
+            </form>
+          </div>
         </div>
+        <%= render 'employee/attendance/new/mark_attendance_modal' %>     
+        <%= render 'employee/attendance/index/attendance_list' %>
+        <%= render 'shared/pagination', item: @attendances %>
+        <button class="btn btn-danger export-button">Export</button>
       </div>
+    </div>
   </div>
 </body>
 </html>

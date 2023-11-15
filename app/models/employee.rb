@@ -19,4 +19,12 @@ class Employee < ApplicationRecord
   def display_id
     company_id
   end
+
+  def present_days_count
+    self.attendances.select {|day| day[:attendance_status] == 'present' }.size
+  end
+
+  def absent_days_count
+    self.attendances.select {|day| day[:attendance_status] == 'absent' }.size
+  end
 end

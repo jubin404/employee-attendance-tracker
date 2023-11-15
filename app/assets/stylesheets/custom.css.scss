@@ -194,6 +194,35 @@ header {
   margin: 5px;
 }
 
+.dashboard-cards, .basic-information {
+  display: flex;
+  column-gap: 15px;
+  margin: 20px;
+}
+
+.dashboard-graphs {
+  display: flex;
+  column-gap: 15px;
+  margin: 20px;
+}
+
+.card-title-graph {
+  font-size: 1.5rem;
+  padding: 20px;
+}
+
+.basic-information .display-4 {
+  font-size: 2rem;
+}
+
+.dashboard-graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+}
+
 .main-content-footer {
   display: flex;
   justify-content: flex-end;
@@ -201,6 +230,13 @@ header {
 
 .main-content-footer .btn {
   margin: 10px;
+}
+
+.export-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px 30px;
 }
 
 footer {
