@@ -15,7 +15,7 @@
             <%= current_employee ? current_employee[:first_name] : current_admin[:first_name] %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">View profile</a>
+            <%= link_to "View Profile", current_admin ? admin_profile_index_path : profile_index_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= button_to "Sign Out", current_admin ? destroy_admin_session_path : destroy_employee_session_path, method: :delete, class: "dropdown-item" %>
           </div>

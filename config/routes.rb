@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post 'employee/new', to: 'employee#create'
     resources :attendance
     post 'attendance/new', to: 'attendance#create'
+    resources :profile
   end
 
   scope module: 'employee' do

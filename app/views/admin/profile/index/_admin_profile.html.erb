@@ -1,0 +1,10 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <% current_admin.attributes.each do |title, value| %>
+      <% if ["first_name", "last_name", "email", "phone_number"].include?(title) %>
+      <% title = title.split('_').map {|key| key.capitalize}.join(' ') %>
+        <%= render 'admin/profile/index/profile_row', title: title, value: value, hr: title != 'Email' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
