@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   scope module: 'employee' do
     get 'dashboard', to: 'dashboard#index'
-    resources :attendance
+    resources :attendance do
+      collection do
+        get 'export', to: 'attendance#export'
+      end
+    end
     post 'attendance/new', to: 'attendance#create'
     resources :profile
   end

@@ -27,7 +27,7 @@
         <%= render 'employee/attendance/new/mark_attendance_modal' %>     
         <%= render 'employee/attendance/index/attendance_list' %>
         <%= render 'shared/pagination', item: @attendances %>
-        <button class="btn btn-danger export-button">Export</button>
+        <%= link_to 'Export', export_attendance_index_path(format: :csv), class: 'btn btn-danger export-button' %>
       </div>
     </div>
   </div>
