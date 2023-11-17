@@ -4,6 +4,9 @@ class Attendance < ApplicationRecord
 
   validates :date, presence: true
   validate :punch_out_time_must_be_greater_than_punch_in_time
+  validate :attendance_status_valid_value
+  before_save :downcase_attendance_status
+
 
   scope :between_dates, ->(start_date, end_date) { where(date: start_date..end_date) }
   scope :today, -> { where(date: Date.today) }
@@ -15,6 +18,17 @@ class Attendance < ApplicationRecord
     if punch_out_time <= punch_in_time
       errors.add(:punch_out_time, 'must be greater than punch in time')
     end
+  end
+
+  def downcase_attendance_status
+    self.attendance_status.downcase!
+ end
+
+  def attendance_status_valid_value
+    return if attendance_status.nil?
+
+    valid_values = ['present', 'absent']
+    errors.add(:attendance_status, 'is not a valid value') unless valid_values.include?(attendance_status.downcase)
   end
 
   def working_hours
