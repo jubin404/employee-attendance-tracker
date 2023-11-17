@@ -17,10 +17,10 @@
         <div class="dashboard-cards">
           <%= render 'admin/dashboard/index/dashboard_card', title: @employees.count, description:'Total Employees' %>
           <%= render 'admin/dashboard/index/dashboard_card', title: @present_employees.count, description:'Present Employees' %>
-          <%= render 'admin/dashboard/index/dashboard_card', title: (@employees.count - @present_employees.count), description:'Absent Employees' %>
+          <%= render 'admin/dashboard/index/dashboard_card', title: @absent_employees_count, description:'Absent Employees' %>
         </div>
-                <div class="dashboard-graphs">
-          <%= render 'admin/dashboard/index/dashboard_graph', type: 'bar', title: 'Employee Status' %>
+        <div class="dashboard-graphs">
+          <%= render 'admin/dashboard/index/dashboard_graph', type: 'column', title: 'Employee Status' %>
           <%= render 'admin/dashboard/index/dashboard_graph', type: 'pie', title: 'Attendance Status' %>
         </div>
 

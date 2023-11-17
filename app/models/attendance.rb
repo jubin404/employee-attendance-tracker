@@ -6,7 +6,9 @@ class Attendance < ApplicationRecord
   validate :punch_out_time_must_be_greater_than_punch_in_time
 
   scope :between_dates, ->(start_date, end_date) { where(date: start_date..end_date) }
-  
+  scope :today, -> { where(date: Date.today) }
+  scope :with_present_status, -> { where(attendance_status: 'present') }
+
   def punch_out_time_must_be_greater_than_punch_in_time
     return if punch_in_time.nil? || punch_out_time.nil?
 

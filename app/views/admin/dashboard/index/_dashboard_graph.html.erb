@@ -1,8 +1,8 @@
 <div class="card w-50">
   <div class="card-title-graph"><%= title %></div>
   <div class="card-body dashboard-graph">
-    <% employees_array = @employees.map {|employee| [1,10]} %>
-    <%= line_chart employees_array if type == 'bar'%>
-    <%= pie_chart @attendances.group(:attendance_status).count, colors: ["#6495ED", "#666"]  if type == 'pie'%>
+    <% employees_array = [['present', @present_employees.count],['absent', @absent_employees_count]] %>
+    <%= column_chart @attendances.with_present_status.group_by_day_of_week(:date).count if type == 'column' %>
+    <%= pie_chart employees_array, colors: ["#6495ED", "#666"]  if type == 'pie'%>
   </div>
 </div>
