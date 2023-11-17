@@ -35,6 +35,7 @@ class Admin::AttendanceController < Admin::BaseController
       flash[:notice] = "Attendance was updated successfully."
       redirect_to admin_attendance_index_path
     else
+      flash[:notice] = @attendance.errors.full_messages
       render 'edit'
     end
   end

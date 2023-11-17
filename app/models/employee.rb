@@ -7,7 +7,10 @@ class Employee < ApplicationRecord
   validates :first_name, length: { minimum: 3 }
   validates :last_name, length: { minimum: 3 }
   validates :company_id, format: { with: /\A\ATM/, message: "must start with 'TM'" }
-
+  validates :phone_number,   :presence => {:message => 'Invalid phone number'},
+                             :numericality => true,
+                             :length => { :minimum => 10, :maximum => 15 }
+                      
   belongs_to :gender
   has_many :addresses
   has_many :attendances

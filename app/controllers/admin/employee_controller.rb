@@ -15,6 +15,7 @@ class Admin::EmployeeController < Admin::BaseController
       flash[:notice] = "Employee was updated successfully."
       redirect_to admin_employee_path(@employee)
     else
+      flash[:notice] = @employee.errors.full_messages
       render 'edit'
     end
   end
