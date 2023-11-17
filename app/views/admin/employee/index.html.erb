@@ -14,7 +14,7 @@
         <div class="main-content-header">
           <h2>Employee List</h2>
           <div class="main-content-header-inputs">
-            <%= form_with(url: admin_employee_index_path, method: 'get', local: true) do |form| %>
+            <%= form_with(url: admin_employee_index_path, method: 'get', local: true, class: 'main-content-header-input') do |form| %>
               <%= render 'admin/shared/search_bar' %>
             <% end %>
             <%= link_to '+ Add Employee', new_admin_employee_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
