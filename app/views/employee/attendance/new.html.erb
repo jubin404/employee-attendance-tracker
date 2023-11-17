@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mark Attendance</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'employee/shared/left_side_bar', attendance: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Mark Attendance</h2>
-        </div>
-        <div class="employee-information">
-          <%= render 'employee/attendance/new/attendance_form' %>
-        </div>
+<div class="main-content">
+  <%= render 'employee/shared/left_side_bar', attendance: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Mark Attendance</h2>
+      </div>
+      <div class="employee-information">
+        <%= render 'employee/attendance/new/attendance_form' %>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>

@@ -1,38 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'employee/shared/left_side_bar', dashboard: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Dashboard</h2>
-        </div>
-        <div class="dashboard-cards">
-          <%= render 'employee/dashboard/index/dashboard_card', title: '20', description:'Working Days' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.present_days_count, description:'Present Days' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.absent_days_count, description:'Absent Days' %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: '10', description:'Holidays' %>
-        </div>
-        <div class="dashboard-graphs">
-          <%= render 'employee/dashboard/index/dashboard_graph', type: 'line', title: 'Working Hours' %>
-          <%= render 'employee/dashboard/index/dashboard_graph', type: 'pie', title: 'Attendance Status' %>
-        </div>
-        <hr>
-        <div class="basic-information">
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'ID', description: current_employee[:company_id] %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Name', description: current_employee.display_name %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Email', description: current_employee[:email] %>
-          <%= render 'employee/dashboard/index/dashboard_card', title: 'Phone Number', description: current_employee[:phone_number] %>
-        </div>
+<div class="main-content">
+  <%= render 'employee/shared/left_side_bar', dashboard: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Dashboard</h2>
+      </div>
+      <div class="dashboard-cards">
+        <%= render 'employee/dashboard/index/dashboard_card', title: '20', description:'Working Days' %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.present_days_count, description:'Present Days' %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: current_employee.absent_days_count, description:'Absent Days' %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: '10', description:'Holidays' %>
+      </div>
+      <div class="dashboard-graphs">
+        <%= render 'employee/dashboard/index/dashboard_graph', type: 'line', title: 'Working Hours' %>
+        <%= render 'employee/dashboard/index/dashboard_graph', type: 'pie', title: 'Attendance Status' %>
+      </div>
+      <hr>
+      <div class="basic-information">
+        <%= render 'employee/dashboard/index/dashboard_card', title: 'ID', description: current_employee[:company_id] %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: 'Name', description: current_employee.display_name %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: 'Email', description: current_employee[:email] %>
+        <%= render 'employee/dashboard/index/dashboard_card', title: 'Phone Number', description: current_employee[:phone_number] %>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>

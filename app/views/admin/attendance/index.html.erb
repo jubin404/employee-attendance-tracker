@@ -1,44 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance List</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'admin/shared/left_side_bar', attendances: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Attendance List</h2>
-          <div class="main-content-header-inputs">
-            <%= form_with(url: admin_attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
-              <%= render 'admin/shared/search_bar', placeholder: 'Search by employee name' %>
-              <div class="form-row main-content-header-input">
-                <%= render 'admin/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
-                <%= render 'admin/attendance/index/date_field', label_name: 'End date', param: :end_date %>
-              </div>
-
-              <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
-            <% end %>
-          </div>
+<div class="main-content">
+  <%= render 'admin/shared/left_side_bar', attendances: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Attendance List</h2>
+        <div class="main-content-header-inputs">
+          <%= form_with(url: admin_attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
+            <%= render 'admin/shared/search_bar', placeholder: 'Search by employee name' %>
+            <div class="form-row main-content-header-input">
+              <%= render 'admin/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
+              <%= render 'admin/attendance/index/date_field', label_name: 'End date', param: :end_date %>
+            </div>
+            <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
+          <% end %>
         </div>
-        <div id="attendance-list">
-          <%= render 'admin/attendance/index/attendance_list' %>
-        </div>
-        <%= render 'shared/pagination', item: @attendances %> 
-        <%= link_to 'Export', 
-            export_admin_attendance_index_path(
-              format: :csv,
-              employee_name: params[:employee_name],
-              start_date: params[:start_date], 
-              end_date: params[:end_date]),
-            class: 'btn btn-danger export-button' %>
       </div>
+      <div id="attendance-list">
+        <%= render 'admin/attendance/index/attendance_list' %>
       </div>
+      <%= render 'shared/pagination', item: @attendances %> 
+      <%= link_to 'Export', 
+          export_admin_attendance_index_path(
+            format: :csv,
+            employee_name: params[:employee_name],
+            start_date: params[:start_date], 
+            end_date: params[:end_date]),
+          class: 'btn btn-danger export-button' %>
+    </div>
     </div>
   </div>
-</body>
-</html>
+</div>

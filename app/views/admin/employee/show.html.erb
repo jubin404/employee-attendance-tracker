@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Details</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'admin/shared/left_side_bar', employees: 'active' %>
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Employee Details</h2>
-          <div class="main-content-header-inputs">
-            <%= link_to "Edit", edit_admin_employee_path(@employee), class: "main-content-header-input btn btn-primary" %>
-            <%= link_to "+ Add Attendance",
-                new_admin_attendance_path(attendance: {employee_id: @employee[:company_id], employee_name: @employee.display_name}), 
-                class: "main-content-header-input btn btn-success" %>
-          </div>
+<div class="main-content">
+  <%= render 'admin/shared/left_side_bar', employees: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Employee Details</h2>
+        <div class="main-content-header-inputs">
+          <%= link_to "Edit", edit_admin_employee_path(@employee), class: "main-content-header-input btn btn-primary" %>
+          <%= link_to "+ Add Attendance",
+              new_admin_attendance_path(attendance: {employee_id: @employee[:company_id], employee_name: @employee.display_name}), 
+              class: "main-content-header-input btn btn-success" %>
         </div>
-        <div class="employee-information">
-          <form>
-              <fieldset disabled="disabled">
-                <%= render 'admin/employee/show/employee_form', employee: @employee %>
-              </fieldset>
-          </form>
-        </div>
-
-        <% unless @employee_attendances.empty? %>
-        <hr>
-          <h2>Attendance Overview</h2>
-          <%= render 'admin/employee/show/employee_attendance_list' %>
-          <%= render 'shared/pagination', item: @employee_attendances %>
-        <% end %>
       </div>
+      <div class="employee-information">
+        <form>
+            <fieldset disabled="disabled">
+              <%= render 'admin/employee/show/employee_form', employee: @employee %>
+            </fieldset>
+        </form>
+      </div>
+      <% unless @employee_attendances.empty? %>
+      <hr>
+        <h2>Attendance Overview</h2>
+        <%= render 'admin/employee/show/employee_attendance_list' %>
+        <%= render 'shared/pagination', item: @employee_attendances %>
+      <% end %>
     </div>
   </div>
-</body>
-</html>
+</div>

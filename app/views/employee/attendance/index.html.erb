@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance List</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'employee/shared/left_side_bar', attendance: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Attendance List</h2>
-          <div class="main-content-header-inputs">
-            <%= form_with(url: attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
-              <div class="form-row main-content-header-input">
-                <%= render 'employee/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
-                <%= render 'employee/attendance/index/date_field', label_name: 'End date', param: :end_date %>
-              </div>
-
-              <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
-              <%= link_to 'Mark Attendance', new_attendance_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
-            <% end %>
-          </div>
+<div class="main-content">
+  <%= render 'employee/shared/left_side_bar', attendance: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Attendance List</h2>
+        <div class="main-content-header-inputs">
+          <%= form_with(url: attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
+            <div class="form-row main-content-header-input">
+              <%= render 'employee/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
+              <%= render 'employee/attendance/index/date_field', label_name: 'End date', param: :end_date %>
+            </div>
+            <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
+            <%= link_to 'Mark Attendance', new_attendance_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
+          <% end %>
         </div>
-        <%= render 'employee/attendance/new/mark_attendance_modal' %>     
-        <%= render 'employee/attendance/index/attendance_list' %>
-        <%= render 'shared/pagination', item: @attendances %>
-        <%= link_to 'Export', 
-            export_attendance_index_path(
-              format: :csv,
-              start_date: params[:start_date], 
-              end_date: params[:end_date]),
-            class: 'btn btn-danger export-button' %>
       </div>
+      <%= render 'employee/attendance/new/mark_attendance_modal' %>     
+      <%= render 'employee/attendance/index/attendance_list' %>
+      <%= render 'shared/pagination', item: @attendances %>
+      <%= link_to 'Export', 
+          export_attendance_index_path(
+            format: :csv,
+            start_date: params[:start_date], 
+            end_date: params[:end_date]),
+          class: 'btn btn-danger export-button' %>
     </div>
   </div>
-</body>
-</html>
+</div>

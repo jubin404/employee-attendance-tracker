@@ -1,34 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'employee/shared/left_side_bar', profile: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Profile</h2>
-        </div>
-        <div class="employee-information">
-          <form>
-              <fieldset disabled="disabled">
-                <%= render 'employee/profile/index/employee_form', employee: current_employee %>
-              </fieldset>
-          </form>
-        </div>
-        <% unless @attendances.empty? %>
-          <hr>
-          <h2>Attendance History</h2>
-          <%= render 'employee/profile/index/employee_attendance_list' %>
-          <%= render 'shared/pagination', item: @attendances %>
-        <% end %>
+<div class="main-content">
+  <%= render 'employee/shared/left_side_bar', profile: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Profile</h2>
       </div>
+      <div class="employee-information">
+        <form>
+            <fieldset disabled="disabled">
+              <%= render 'employee/profile/index/employee_form', employee: current_employee %>
+            </fieldset>
+        </form>
+      </div>
+      <% unless @attendances.empty? %>
+        <hr>
+        <h2>Attendance History</h2>
+        <%= render 'employee/profile/index/employee_attendance_list' %>
+        <%= render 'shared/pagination', item: @attendances %>
+      <% end %>
     </div>
   </div>
-</body>
-</html>
+</div>

@@ -1,37 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee List</title>
-</head>
-<body>
-    <div class="main-content">
-    <%= render 'admin/shared/left_side_bar', employees: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Employee List</h2>
-          <div class="main-content-header-inputs">
-            <%= form_with(url: admin_employee_index_path, method: 'get', local: true, class: 'main-content-header-input') do |form| %>
-              <%= render 'admin/shared/search_bar' %>
-            <% end %>
-            <%= link_to '+ Add Employee', new_admin_employee_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
-          </div>
+<div class="main-content">
+  <%= render 'admin/shared/left_side_bar', employees: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Employee List</h2>
+        <div class="main-content-header-inputs">
+          <%= form_with(url: admin_employee_index_path, method: 'get', local: true, class: 'main-content-header-input') do |form| %>
+            <%= render 'admin/shared/search_bar' %>
+          <% end %>
+          <%= link_to '+ Add Employee', new_admin_employee_path,  
+              {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 
+                class: 'main-content-header-input btn btn-success'}  %>
         </div>
-        <%= render 'admin/employee/index/add_employee_modal' %>
-        <div id="employee-list">
-          <%= render 'admin/employee/index/employee_list' %>     
-        </div>  
-        <%= render 'shared/pagination', item: @employees %>
-        <%= link_to 'Export', 
-          export_admin_employee_index_path(
-            format: :csv,
-            employee_name: params[:employee_name]),
-          class: 'btn btn-danger export-button' %>
       </div>
+      <%= render 'admin/employee/index/add_employee_modal' %>
+      <div id="employee-list">
+        <%= render 'admin/employee/index/employee_list' %>     
+      </div>  
+      <%= render 'shared/pagination', item: @employees %>
+      <%= link_to 'Export', 
+        export_admin_employee_index_path(
+          format: :csv,
+          employee_name: params[:employee_name]),
+        class: 'btn btn-danger export-button' %>
     </div>
   </div>
-</body>
-</html>
+</div>

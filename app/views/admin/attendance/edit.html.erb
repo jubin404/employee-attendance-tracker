@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Employee</title>
-</head>
-<body>
-  <div class="main-content">
-    <%= render 'admin/shared/left_side_bar', attendances: 'active' %>
-
-    <div class="right-side-content">
-      <div class="container container-wrapper card">
-        <div class="main-content-header">
-          <h2>Edit Attendance</h2>
-        </div>
-        <div class="employee-information">
-          <%= render 'admin/attendance/edit/attendance_form', employee: @employee %>
-        </div>
+<div class="main-content">
+  <%= render 'admin/shared/left_side_bar', attendances: 'active' %>
+  <div class="right-side-content">
+    <div class="container container-wrapper card">
+      <div class="main-content-header">
+        <h2>Edit Attendance</h2>
+      </div>
+      <div class="employee-information">
+        <%= render 'admin/attendance/edit/attendance_form', employee: @employee %>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>
