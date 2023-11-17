@@ -8,11 +8,6 @@ class Admin::EmployeeController < Admin::BaseController
                  else
                    Employee.all.page(params[:page]).order(created_at: :desc)
                  end
-  
-    respond_to do |format|
-      format.html
-      format.js 
-    end
   end
 
   def edit

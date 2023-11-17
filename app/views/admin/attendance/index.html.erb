@@ -17,14 +17,17 @@
             <%= form_with(url: admin_attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
               <%= render 'admin/shared/search_bar', placeholder: 'Search by employee name' %>
               <div class="form-row main-content-header-input">
-                <%= render 'admin/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
-                <%= render 'admin/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
+                <%= render 'admin/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
+                <%= render 'admin/attendance/index/date_field', label_name: 'End date', param: :end_date %>
               </div>
-              <button class="main-content-header-input btn btn-dark">Search</button>
+
+              <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
             <% end %>
           </div>
         </div>
-        <%= render 'admin/attendance/index/attendance_list' %>
+        <div id="attendance-list">
+          <%= render 'admin/attendance/index/attendance_list' %>
+        </div>
         <%= render 'shared/pagination', item: @attendances %> 
       </div>
     </div>
