@@ -44,6 +44,18 @@ class Admin::AttendanceController < Admin::BaseController
     redirect_to admin_attendance_index_path
   end
 
+  def export 
+    @attendances = Attendance.all
+    @attendances = filter_by_name(@attendances)
+    @attendances = filter_by_date(@attendances)
+    @attendances_csv = make_csv(@attendances)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @attendances_csv, filename: "attendance_list.csv" }
+    end
+  end
+
   private
 
   def attendance_params 
@@ -83,5 +95,17 @@ class Admin::AttendanceController < Admin::BaseController
     return attendances unless params[:employee_name].present?
     
     attendances.find_by_employee_name(params[:employee_name])
+  end
+
+  def make_csv(attendances)
+    attributes = %w[id employee_id date punch_in_time punch_out_time attendance_status]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      attendances.each do |attendance|
+        csv << attributes.map { |attribute| attendance.send(attribute) }
+      end
+    end
   end
 end

@@ -12,9 +12,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
-    resources :employee
+    resources :employee do
+      collection do
+        get 'export', to: 'employee#export'
+      end
+    end
     post 'employee/new', to: 'employee#create'
-    resources :attendance
+    resources :attendance do
+      collection do
+        get 'export', to: 'attendance#export'
+      end
+    end
     post 'attendance/new', to: 'attendance#create'
     resources :profile
   end

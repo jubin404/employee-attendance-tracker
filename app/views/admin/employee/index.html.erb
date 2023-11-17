@@ -25,6 +25,11 @@
           <%= render 'admin/employee/index/employee_list' %>     
         </div>  
         <%= render 'shared/pagination', item: @employees %>
+        <%= link_to 'Export', 
+          export_admin_employee_index_path(
+            format: :csv,
+            employee_name: params[:employee_name]),
+          class: 'btn btn-danger export-button' %>
       </div>
     </div>
   </div>

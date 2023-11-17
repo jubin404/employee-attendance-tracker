@@ -50,6 +50,17 @@ class Admin::EmployeeController < Admin::BaseController
     redirect_to admin_employee_index_path
   end
   
+  def export 
+    @employees = Employee.all
+    @employees = filter_by_name(@employees)
+    @employees_csv = make_csv(@employees)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @employees_csv, filename: "employee_list.csv" }
+    end
+  end
+
   private
 
   def employee_params
@@ -83,5 +94,17 @@ class Admin::EmployeeController < Admin::BaseController
     return employees unless params[:employee_name].present?
     
     employees.find_by_name(params[:employee_name])
+  end
+
+  def make_csv(employees)
+    attributes = %w[id company_id email first_name last_name phone_number]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      employees.each do |employee|
+        csv << attributes.map { |attribute| employee.send(attribute) }
+      end
+    end
   end
 end

@@ -29,6 +29,14 @@
           <%= render 'admin/attendance/index/attendance_list' %>
         </div>
         <%= render 'shared/pagination', item: @attendances %> 
+        <%= link_to 'Export', 
+            export_admin_attendance_index_path(
+              format: :csv,
+              employee_name: params[:employee_name],
+              start_date: params[:start_date], 
+              end_date: params[:end_date]),
+            class: 'btn btn-danger export-button' %>
+      </div>
       </div>
     </div>
   </div>
