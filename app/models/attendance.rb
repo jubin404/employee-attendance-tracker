@@ -30,9 +30,9 @@ class Attendance < ApplicationRecord
 
   def time_check_for_status
     if attendance_status.strip.downcase == 'absent'
-      errors.add(:attendance_status, 'absent cannot take punching times') unless punch_in_time.nil? || punch_out_time.nil?
+      errors.add(:attendance_status, ': Absent cannot take punching times') unless punch_in_time.nil? || punch_out_time.nil?
     else
-      errors.add(:attendance_status, 'present must have punching times') if punch_in_time.nil? || punch_out_time.nil?
+      errors.add(:attendance_status, ': Present must have punching times') if punch_in_time.nil? || punch_out_time.nil?
     end 
   end
 

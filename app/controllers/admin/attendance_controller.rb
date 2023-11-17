@@ -29,8 +29,10 @@ class Admin::AttendanceController < Admin::BaseController
   def edit 
     @employee = Employee.find(@attendance[:employee_id])
   end
-
+  
   def update
+    @employee = Employee.find(@attendance[:employee_id])
+
     if @attendance.update(attendance_update_params)
       flash[:notice] = "Attendance was updated successfully."
       redirect_to admin_attendance_index_path
