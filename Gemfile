@@ -25,11 +25,20 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Authenticaion and sessions
 gem 'devise'
+
+# Styling
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'font-awesome-rails'
+
+# Information on countries
 gem 'countries'
+
+# Pagination
 gem 'kaminari'
+
+# Charts and Graphs
 gem 'chartkick'
 gem 'groupdate'
 
