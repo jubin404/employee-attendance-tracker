@@ -14,17 +14,16 @@
         <div class="main-content-header">
           <h2>Dashboard</h2>
         </div>
-          <div class="buttons-list">
-            <button class="btn btn-lg btn-link">
-              <a href='/admin/employee/new'>Add employee</a>
-            </button>
-            <button class="btn btn-lg btn-link">
-              <a href='/admin/employee'>Employee list</a>
-            </button>
-            <button class="btn btn-lg btn-link">
-              <a href='/admin/attendance'>Attendances list</a>
-            </button>
-          </div>
+        <div class="dashboard-cards">
+          <%= render 'admin/dashboard/index/dashboard_card', title: '20', description:'Total Empoyees' %>
+          <%= render 'admin/dashboard/index/dashboard_card', title: '20', description:'Present Employees' %>
+          <%= render 'admin/dashboard/index/dashboard_card', title: '10', description:'Absent Employees' %>
+        </div>
+                <div class="dashboard-graphs">
+          <%= render 'admin/dashboard/index/dashboard_graph', type: 'line', title: 'Working Hours' %>
+          <%= render 'admin/dashboard/index/dashboard_graph', type: 'pie', title: 'Attendance Status' %>
+        </div>
+
       </div>
     </div>
   </div>
