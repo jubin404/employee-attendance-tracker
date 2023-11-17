@@ -3,11 +3,8 @@ class Admin::EmployeeController < Admin::BaseController
   
   def index
     @employee = Employee.new
-    @employees = if params[:employee_name].present?
-                   Employee.find_by_name(params[:employee_name]).page(params[:page]).order(created_at: :desc)
-                 else
-                   Employee.all.page(params[:page]).order(created_at: :desc)
-                 end
+    @employees = Employee.all
+    @employees = filter_by_name(@employees).page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -80,5 +77,11 @@ class Admin::EmployeeController < Admin::BaseController
 
   def employee_address
     @employee.addresses.find_by(status: 'active')
+  end
+
+  def filter_by_name(employees)
+    return employees unless params[:employee_name].present?
+    
+    employees.find_by_name(params[:employee_name])
   end
 end

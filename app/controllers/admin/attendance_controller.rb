@@ -2,18 +2,9 @@ class Admin::AttendanceController < Admin::BaseController
   before_action :set_attendance, only: [:edit, :update, :destroy]
   
   def index 
-    @attendances = if params[:employee_name].present?
-                    Attendance.find_by_employee_name(params[:employee_name]).page(params[:page]).order(created_at: :desc)
-                  else
-                    Attendance.all.page(params[:page]).order(created_at: :desc)
-                  end
-
-    if params[:start_date].present? && params[:end_date].present?
-      start_date = Date.parse(params[:start_date])
-      end_date = Date.parse(params[:end_date])
-
-      @attendances = @attendances.between_dates(start_date, end_date).page(params[:page]).order(created_at: :desc)
-    end
+    @attendances = Attendance.all
+    @attendances = filter_by_name(@attendances)
+    @attendances = filter_by_date(@attendances).page(params[:page]).order(created_at: :desc)
   end
 
   def new
@@ -77,5 +68,20 @@ class Admin::AttendanceController < Admin::BaseController
 
   def set_attendance
     @attendance = Attendance.find(params[:id])
+  end
+
+  def filter_by_date(attendances)
+    return attendances unless params[:start_date].present? && params[:end_date].present?
+
+    start_date = Date.parse(params[:start_date])
+    end_date = Date.parse(params[:end_date])
+
+    attendances.between_dates(start_date, end_date)
+  end
+
+  def filter_by_name(attendances)
+    return attendances unless params[:employee_name].present?
+    
+    attendances.find_by_employee_name(params[:employee_name])
   end
 end
