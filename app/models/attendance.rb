@@ -17,4 +17,16 @@ class Attendance < ApplicationRecord
     return 0 if punch_out_time.nil?
     (punch_out_time - punch_in_time) / 3600 
   end
+
+  def self.find_by_employee_name(name)
+    return [] if name.blank?
+
+    first_name, last_name = name.split(' ', 2)
+
+    if last_name.present?
+      joins(:employee).where("employees.first_name LIKE ? AND employees.last_name LIKE ?", "%#{first_name}%", "%#{last_name}%")
+    else
+      joins(:employee).where("employees.first_name LIKE ? OR employees.last_name LIKE ?", "%#{first_name}%", "%#{first_name}%")
+    end
+  end
 end

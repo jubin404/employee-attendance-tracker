@@ -2,7 +2,16 @@ class Admin::AttendanceController < Admin::BaseController
   before_action :set_attendance, only: [:edit, :update, :destroy]
   
   def index 
-    @attendances = Attendance.all.page(params[:page]).order(created_at: :desc)
+    @attendances = if params[:employee_name].present?
+      Attendance.find_by_employee_name(params[:employee_name]).page(params[:page]).order(created_at: :desc)
+    else
+      Attendance.all.page(params[:page]).order(created_at: :desc)
+    end
+
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def new

@@ -14,14 +14,14 @@
         <div class="main-content-header">
           <h2>Attendance List</h2>
           <div class="main-content-header-inputs">
-            <form class="form-inline my-2 my-lg-0 main-content-header-input">
-              <%= render 'admin/shared/search_bar', placeholder: 'Search by employee' %>
+            <%= form_with(url: admin_attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
+              <%= render 'admin/shared/search_bar', placeholder: 'Search by employee name' %>
               <div class="form-row main-content-header-input">
                 <%= render 'admin/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
                 <%= render 'admin/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
               </div>
               <button class="main-content-header-input btn btn-dark">Search</button>
-            </form>
+            <% end %>
           </div>
         </div>
         <%= render 'admin/attendance/index/attendance_list' %>
