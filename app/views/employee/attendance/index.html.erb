@@ -14,14 +14,15 @@
         <div class="main-content-header">
           <h2>Attendance List</h2>
           <div class="main-content-header-inputs">
-            <form class="form-inline my-2 my-lg-0 main-content-header-input">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <%= form_with(url: attendance_index_path, method: 'get', class: 'form-inline main-content-header-input', local: true) do |form| %>
               <div class="form-row main-content-header-input">
-                <%= render 'employee/attendance/index/date_field', label_name: 'Start date', id: 'inputStartDate' %>
-                <%= render 'employee/attendance/index/date_field', label_name: 'End date', id: 'inputEndDate' %>
+                <%= render 'employee/attendance/index/date_field', label_name: 'Start date', param: :start_date %>
+                <%= render 'employee/attendance/index/date_field', label_name: 'End date', param: :end_date %>
               </div>
+
+              <%= submit_tag 'Search', class: "main-content-header-input btn btn-dark" %>
               <%= link_to 'Mark Attendance', new_attendance_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
-            </form>
+            <% end %>
           </div>
         </div>
         <%= render 'employee/attendance/new/mark_attendance_modal' %>     

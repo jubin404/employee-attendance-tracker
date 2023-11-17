@@ -1,4 +1,4 @@
 <div class="form-group">
-  <label for="<%= id %>"><%= label_name %></label>
-  <input type="date" class="form-control" id="<%= id %>">
+  <%= label_tag label_name %>
+  <%= date_field_tag param, params[param], class: "form-control" %>
 </div>
