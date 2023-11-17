@@ -37,7 +37,7 @@ class Attendance < ApplicationRecord
   end
 
   def downcase_attendance_status
-    self.attendance_status.strip!.downcase!
+    attendance_status.strip.downcase!
  end
 
   def attendance_status_valid_value
