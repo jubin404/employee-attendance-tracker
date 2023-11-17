@@ -12,6 +12,11 @@ class Employee < ApplicationRecord
   has_many :addresses
   has_many :attendances
 
+  scope :with_present_attendance_today, -> {
+    joins(:attendances)
+      .where(attendances: { date: Date.today, attendance_status: 'present' })
+  }
+
   def display_name
     "#{first_name} #{last_name}"
   end
