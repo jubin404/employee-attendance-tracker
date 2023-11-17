@@ -1,0 +1,13 @@
+$(document).on('turbolinks:load', function() {
+  $('#employee-name-input').on('input', function() {
+    var inputVal = $(this).val();
+    $.ajax({
+      url: '<%= admin_employee_index_path %>',
+      type: 'GET',
+      data: { employee_name: inputVal },
+      success: function(data) {
+        $('#employee-list').html(data);
+      }
+    });
+  });
+});

@@ -27,4 +27,16 @@ class Employee < ApplicationRecord
   def absent_days_count
     self.attendances.select {|day| day[:attendance_status] == 'absent' }.size
   end
+
+  def self.find_by_name(name)
+    return [] if name.blank?
+
+    first_name, last_name = name.split(' ', 2)
+
+    if last_name.present?
+      where("first_name LIKE ? AND last_name LIKE ?", "%#{first_name}%", "%#{last_name}%")
+    else
+      where("first_name LIKE ? OR last_name LIKE ?", "%#{first_name}%", "%#{first_name}%")
+    end
+  end
 end

@@ -1,1 +1,1 @@
-<input class="form-control mr-sm-2" type="search" placeholder="<%= placeholder ||= 'Search' %>" aria-label="Search">
+<%= text_field_tag :employee_name, params[:employee_name], placeholder: placeholder ||= 'Search', id: 'employee-name-input', class: 'form-control mr-sm-2' %>

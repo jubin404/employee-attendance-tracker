@@ -3,7 +3,16 @@ class Admin::EmployeeController < Admin::BaseController
   
   def index
     @employee = Employee.new
-    @employees = Employee.all.page(params[:page]).order(created_at: :desc)
+    @employees = if params[:employee_name].present?
+                   Employee.find_by_name(params[:employee_name]).page(params[:page]).order(created_at: :desc)
+                 else
+                   Employee.all.page(params[:page]).order(created_at: :desc)
+                 end
+  
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def edit

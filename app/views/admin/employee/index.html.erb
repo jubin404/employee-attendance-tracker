@@ -14,14 +14,16 @@
         <div class="main-content-header">
           <h2>Employee List</h2>
           <div class="main-content-header-inputs">
-            <form class="form-inline my-2 my-lg-0 main-content-header-input">
+            <%= form_with(url: admin_employee_index_path, method: 'get', local: true) do |form| %>
               <%= render 'admin/shared/search_bar' %>
-            </form>
+            <% end %>
             <%= link_to '+ Add Employee', new_admin_employee_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'main-content-header-input btn btn-success'}  %>
           </div>
         </div>
-        <%= render 'admin/employee/index/add_employee_modal' %>     
-        <%= render 'admin/employee/index/employee_list' %>     
+        <%= render 'admin/employee/index/add_employee_modal' %>
+        <div id="employee-list">
+          <%= render 'admin/employee/index/employee_list' %>     
+        </div>  
         <%= render 'shared/pagination', item: @employees %>
       </div>
     </div>
